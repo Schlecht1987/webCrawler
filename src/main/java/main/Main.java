@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import mapping.Begegnung;
 import mapping.Ergebnis;
 import mapping.HistoryQuote;
-import mapping.Mannschaft;
 import mapping.Quote;
 import mapping.Spieltyp;
 import mapping.Wettanbieter;
@@ -18,70 +17,76 @@ import mapping.Wettanbieter;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
+import webcrawler.Bwin;
 import webcrawler.DbManage;
 import webcrawler.WebCrawler;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Main.
+ */
 public class Main {
 
-    public static DbManage dbmanage;
 
 
+
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static void main(String[] args) {
 
-       // WebCrawler.bwin("http://sports.bwin.com/de/sports/4/43/wetten/bundesliga");
-        //bwin("http://sports.bwin.com/de/sports/4/79/wetten/2-bundesliga");
-       // Mannschaft m = new Mannschaft("FC Bayern", "Deutschland");
+        Bwin b = new Bwin();
         
-       // sessionFactory = getSessionFactory();  
-      //  GenerateDB gen = new GenerateDB(sessionFactory);
-     //   gen.generate(250);
-
-            dbmanage = new DbManage();
-            dbmanage.checkMannschaft("BVB", "Deutschland");
+        //bundesliga ergebnisse : https://sports.bwin.com/de/sports/results?sport=4&region=17&league=43&period=OneMonth&sort=Date
+        b.crawlErgebnisse("https://sports.bwin.com/de/sports/results?sport=4&region=17&league=43&period=OneMonth&sort=Date");
             
-            Timer t = new Timer();
+       /*     Timer t = new Timer();
             
             t.schedule(new TimerTask(){
        
                @Override
                public void run() {
-                  System.out.println(System.currentTimeMillis());            
+                   
+                   long zstVorher;
+                   long zstNachher;
+
+                   zstVorher = System.currentTimeMillis();
+                   System.out.println("RUNNING NEW CRAWL");   
+                   WebCrawler.crawl();
+
+                   zstNachher = System.currentTimeMillis();
+                   System.out.println("Zeit benötigt: " + ((zstNachher - zstVorher)/1000) + " sec");
+                   
+
+                  System.out.println("Finish Running Crawl");            
                }
        
-            }, 0, 5000); //alle 5 sekunden...
+            }, 0, 3600000); //alle 5 sekunden...*/
         
-        /*Session session = sessionFactory.openSession();
- 
-       
-        
-        session.beginTransaction();
-       
-        Mannschaft m = new Mannschaft("BVB","Deutschland");  
-        session.save(m);
-        session.getTransaction().commit();
-        
-        session.beginTransaction();
-;
-        System.out.println(m.getId()+" "+m.getName());
-        Spieltyp s = new Spieltyp("Bwin");
-        session.save(s);
-        Begegnung b = new Begegnung();
-        b.setMannschaft_1(m);
-        b.setMannschaft_2(m);
-        b.setDatum(new Date());
-        b.setSpieltyp(s);
-        session.save(b);
-        session.getTransaction().commit();
-        
-        session.close();
-        sessionFactory.close();*/
+     
 
+    }
+    
+    public static void run(){
+        long zstVorher;
+        long zstNachher;
+
+        zstVorher = System.currentTimeMillis();
+        System.out.println("RUNNING NEW CRAWL");   
+        WebCrawler.crawl();
+
+        zstNachher = System.currentTimeMillis();
+        System.out.println("Zeit benötigt: " + ((zstNachher - zstVorher)/1000) + " sec");
+        
+
+       System.out.println("Finish Running Crawl");
+       WebCrawler.dbmanage.sessionFactory.close();
     }
 
   

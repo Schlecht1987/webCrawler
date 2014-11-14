@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 
 public class XPath {
 
+    //-----------------BEGEGNUNG------------------------
     public static String getAnzahlSpieltage() {
         return "//*[@id='markets']/div[1]/div/ul/li/ul/li";
     }
@@ -25,7 +26,7 @@ public class XPath {
     }
 
     public static String getErsteMannschaftQuote() {
-        return getBegegnungsPath(1, 2);
+        return getBegegnungsPath(1, 1);
     }
 
     public static String getUnentschiedenQuote() {
@@ -39,9 +40,34 @@ public class XPath {
     public static String getZweiteMannschaftQuote() {
         return getBegegnungsPath(3, 1);
     }
-
+    
     private static String getBegegnungsPath(int i, int j) {
         return "td[" + i + "]/form/button/span[" + j + "]";
+    }
+    //--------------ERGEBNIS-----------------------------
+    public static String getAnzahlErgebnise(){
+        return "//*[@id='result-items']/div";
+    }
+    
+    public static String getEregebnisTag(int i){
+        return "//*[@id='result-items']/div["+i+"]/h3";
+    }
+        
+    public static String getAnzahlErgebnis(int i){
+        return "//*[@id='result-items']/div["+i+"]/table/tbody/tr";
+    }
+    public static String getErgebnis(int i, int j){
+        return "//*[@id='result-items']/div["+i+"]/table/tbody/tr["+j+"]";
+    }
+    
+    public static String getErgebnisMannschaften(int i, int j){
+        
+        return "//*[@id='result-items']/div["+i+"]/table/tbody/tr["+j+"]/td[2]";
+    }
+    
+    public static String getErgebnisTore(int i, int j){
+        
+        return "//*[@id='result-items']/div["+i+"]/table/tbody/tr["+j+"]/td[3]";
     }
 
 }

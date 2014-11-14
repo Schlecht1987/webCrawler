@@ -16,10 +16,10 @@
 			jdbc:mysql://localhost/fussballquoten
 		</property>
 		<property name="hibernate.connection.username">
-			root
+			webcrawler
 		</property>
 		<property name="hibernate.connection.password">
-			root
+			webcrawler
 		</property>
 		<property name="show_sql">
 		true
@@ -34,7 +34,6 @@
 
 		<mapping class="mapping.Begegnung" />
 		<mapping class="mapping.Spieltyp" />
-		<mapping class="mapping.Mannschaft" />
 		<mapping class="mapping.Ergebnis" />
 		<mapping class="mapping.Quote" />
 		<mapping class="mapping.Wettanbieter" />
