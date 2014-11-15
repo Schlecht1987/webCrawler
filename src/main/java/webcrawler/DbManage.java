@@ -8,6 +8,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import mapping.Begegnung;
+import mapping.Ergebnis;
 import mapping.HistoryQuote;
 import mapping.Quote;
 import mapping.Spieltyp;
@@ -39,6 +40,10 @@ public class DbManage {
      */
     public DbManage() {
         sessionFactory = getSessionFactory();
+        logger.debug("DEBUG MASSAGE");
+        logger.info("INFO MASSAGE");
+        logger.error("ERROR MASSAGE");
+   
         
     }
 
@@ -94,9 +99,9 @@ public class DbManage {
      */
     public void saveCrawledInfo(CrawlInfos cf) {
 
-        if (checkIfBegegnungAlreadyExist(cf)) {
+        if (checkIfBegegnungAlreadyExist(cf.getErsteMannschaft(),cf.getZweiteMannschaft(),cf.getDate())) {
             logger.info("Found Same Begegnung. Not saving them");
-            Begegnung b = getBegegnunFromCrawlInfo(cf);
+            Begegnung b = getBegegnung(cf.getErsteMannschaft(),cf.getZweiteMannschaft(),cf.getDate());
             List<Quote> list = (List<Quote>) getQuery(MakeQuery.getQuoteFromBegegnungsId(b.getId()));
             if (list.size() == 1) {
                 Quote latest = convertCrawlInfos(cf, b);
@@ -117,6 +122,43 @@ public class DbManage {
             saveObject(q, printQuote(q));
         }
 
+    }
+    
+    public void saveCrawlErgebnis(CrawlErgebnis ce){
+        
+        if(checkIfBegegnungAlreadyExist(ce.getMannschaft_1(),ce.getMannschaft_2(),ce.getDate())){
+            logger.info("FOUDN Ergebnis for Begenung");
+            Begegnung b = getBegegnung(ce.getMannschaft_1(),ce.getMannschaft_2(),ce.getDate());
+            if(checkIfEregebnisAlreadySet(b))
+            {
+                logger.info(" Ergebnis Already exists for Begenung");
+            }else
+            {
+                Ergebnis e = convertCrawlErgebnisToErgebnis(ce,b);
+                saveObject(e, printErgebnis(e));
+            }
+            
+        }
+        
+    }
+    
+    private Boolean checkIfEregebnisAlreadySet(Begegnung b){
+        List<Ergebnis> erg = (List<Ergebnis>)getQuery(MakeQuery.checkIfBegegnungHasAlreadyAErebnis(b.getId()));
+        if(erg.size() > 0){
+            return true;
+        }
+        return false;
+    }
+    
+    private Ergebnis convertCrawlErgebnisToErgebnis(CrawlErgebnis ce, Begegnung b){
+        Ergebnis e = new Ergebnis();
+        e.setM1_h_tore(ce.getH_tore_1());
+        e.setM2_h_tore(ce.getH_tore_2());
+        e.setM1_tore(ce.getTore_1());
+        e.setM2_tore(ce.getTore_2());
+        e.setSieger(ce.getSieger());
+        e.setBegegnung(b);
+        return e;
     }
     
     private void updateQuoteAndSaveToHistory(Quote old, Quote latest){
@@ -147,9 +189,9 @@ public class DbManage {
      * @param cf the cf
      * @return the boolean
      */
-    private Boolean checkIfBegegnungAlreadyExist(CrawlInfos cf) {
+    private Boolean checkIfBegegnungAlreadyExist(String mannschaft_1,String mannschaft_2, Date date) {
         List<Begegnung> begegnungen = null;
-        begegnungen = (List<Begegnung>) getQuery(MakeQuery.getSpecificBegegnungsQuery(cf));
+        begegnungen = (List<Begegnung>) getQuery(MakeQuery.getSpecificBegegnungsQuery(mannschaft_1,mannschaft_2,date));
         if (begegnungen.size() == 1) {
             return true;
         } else if (begegnungen.size() == 0) {
@@ -164,9 +206,9 @@ public class DbManage {
 
     }
 
-    private Begegnung getBegegnunFromCrawlInfo(CrawlInfos cf) {
+    private Begegnung getBegegnung(String mannschaft_1,String mannschaft_2, Date date) {
         List<Begegnung> begegnungen = null;
-        begegnungen = (List<Begegnung>) getQuery(MakeQuery.getSpecificBegegnungsQuery(cf));
+        begegnungen = (List<Begegnung>) getQuery(MakeQuery.getSpecificBegegnungsQuery(mannschaft_1,mannschaft_2,date));
         if (begegnungen.size() == 1) {
             return begegnungen.get(0);
         } else if (begegnungen.size() == 0) {
@@ -179,6 +221,8 @@ public class DbManage {
             return begegnungen.get(0);
         }
     }
+    
+   
 
     /**
      * Gets the query.
@@ -301,9 +345,7 @@ public class DbManage {
      * @param date the date
      * @return the date format from string
      */
-    public String getHQLDateFormatFromDate(Date date) {
-        return new SimpleDateFormat("yyyy-MM-dd").format(date);
-    }
+
 
     /**
      * Convert crawl infos.
@@ -410,6 +452,10 @@ public class DbManage {
     
     private String printHistoryQuote(HistoryQuote hq){
         return "Quote change by:"+printQuote(hq.getQuote())+" \n\r to :"+hq.getQuote1()+"|"+hq.getQuoteX()+"|"+hq.getQuote2();
+    }
+    
+    private String printErgebnis(Ergebnis e){
+        return "Ergebnis: "+e.getBegegnung().getMannschaft_1()+" vs "+e.getBegegnung().getMannschaft_2()+" "+e.getM1_tore()+":"+e.getM2_tore()+" ("+e.getM1_h_tore()+":"+e.getM2_h_tore()+")";
     }
 
 }

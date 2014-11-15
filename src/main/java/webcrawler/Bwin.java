@@ -33,15 +33,15 @@ public class Bwin {
 
     /** The logger. */
     private final Logger logger       = LoggerFactory.getLogger(Bwin.class);
+    
 
     /**
      * Instantiates a new bwin.
      */
     public Bwin() {
-        java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);
-        java.util.logging.Logger.getLogger("org.apache.http").setLevel(java.util.logging.Level.OFF);
+
     }
-    
+
     //------------------------------------CRAWL BEGEGNUNG INFOS--------------------------------------
     /**
      * Crawl.
@@ -50,14 +50,22 @@ public class Bwin {
      * @param spieltyp the spieltyp
      */
     public void crawl(String url, String spieltyp) {
-        Session session = WebCrawler.dbmanage.sessionFactory.openSession();
-        List<CrawlInfos> crawlInfos = getInfos(url, spieltyp);
-        for (CrawlInfos cf : crawlInfos) {
-            WebCrawler.dbmanage.saveCrawledInfo(cf);
+        java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);
+        java.util.logging.Logger.getLogger("org.apache.http").setLevel(java.util.logging.Level.OFF);
+        try {
+            
+            List<CrawlInfos> crawlInfos = getInfos(url, spieltyp);
+            for (CrawlInfos cf : crawlInfos) {
+                WebCrawler.dbmanage.saveCrawledInfo(cf);
+            }
+        } catch (Exception e) {
+            logger.error("Fail to Crawl the following URL: "+url);
+            e.printStackTrace();
         }
+
     }
 
-    public Date getDateFromCrawlInfosString(String date) {
+    private Date getDateFromCrawlInfosString(String date) {
         Date d;
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
         try {
@@ -71,12 +79,10 @@ public class Bwin {
         return d;
     }
 
-    public static String splitDateFromCrawlInfos(String date) {
+    private static String splitDateFromCrawlInfos(String date) {
         int index = date.indexOf("-");
         return date.substring(index + 2);
     }
-
-   
 
     /**
      * Gets the infos.
@@ -85,7 +91,7 @@ public class Bwin {
      * @param spieltyp the spieltyp
      * @return the infos
      */
-    public List<CrawlInfos> getInfos(String url, String spieltyp) {
+    private List<CrawlInfos> getInfos(String url, String spieltyp) {
         WebDriver driver = new HtmlUnitDriver();
         List<CrawlInfos> crawlInfos = new ArrayList<CrawlInfos>();
         driver.get(url);
@@ -121,15 +127,67 @@ public class Bwin {
         b.print();
         return b;
     }
-    
+
     //---------------------------CRAWL ERGEBNIS-------------------------
 
-    
-    public String splitDateFromErgebnisString(String date){
-        int index = date.indexOf(",");
-        return date.substring(index+1);
+    public void crawlErgebnisse(String url) {
+        try {
+            List<CrawlErgebnis> list = getErgebnisse(url);
+            for (CrawlErgebnis crawlErgebnis : list) {
+                WebCrawler.dbmanage.saveCrawlErgebnis(crawlErgebnis);
+            }
+        } catch (Exception e) {
+            logger.error("Fail to Crawl the following URL: "+url);
+            e.printStackTrace();
+        }
     }
-    public Date getDateFromCrawlErgebnisString(String date) {
+
+    private List<CrawlErgebnis> getErgebnisse(String url) {
+        WebDriver driver = new HtmlUnitDriver();
+        List<CrawlErgebnis> list = new ArrayList<CrawlErgebnis>();
+        driver.get(url);
+        for (int i = 1; i <= driver.findElements(By.xpath(XPath.getAnzahlErgebnise())).size(); i++) {
+            String date = driver.findElements(By.xpath(XPath.getEregebnisTag(i))).get(0).getText();
+            for (int j = 1; j <= driver.findElements(By.xpath(XPath.getAnzahlErgebnis(i))).size(); j++) {
+                String mannschaften = driver.findElements(By.xpath(XPath.getErgebnisMannschaften(i, j))).get(0).getText();
+                String tore = driver.findElements(By.xpath(XPath.getErgebnisTore(i, j))).get(0).getText();
+                list.add(makeCrawlErgebnis(mannschaften, tore, date));
+            }
+        }
+        driver.close();
+        return list;
+    }
+
+    private CrawlErgebnis makeCrawlErgebnis(String mannschaften, String tore, String date) {
+        CrawlErgebnis ce = new CrawlErgebnis();
+        ce.setMannschaft_1(splitErgebnisMannschaf_1(mannschaften));
+        ce.setMannschaft_2(splitErgebnisMannschaf_2(mannschaften));
+        String halbzeitErg = splitHalbzeitErgebnis(tore);
+        String gesamtErg = splitGesamtErgebnis(tore);
+        ce.setH_tore_1(getToreM1(halbzeitErg));
+        ce.setH_tore_2(getToreM2(halbzeitErg));
+        ce.setTore_1(getToreM1(gesamtErg));
+        ce.setTore_2(getToreM2(gesamtErg));
+        ce.setDate(getDateFromCrawlErgebnisString(date));
+        if (ce.getTore_1() > ce.getTore_2()) {
+            ce.setSieger("1");
+        } else if (ce.getTore_1() == ce.getTore_2()) {
+            ce.setSieger("x");
+        } else {
+            ce.setSieger("2");
+        }
+        ce.print();
+        System.out.println("DATUM : " + ce.getDate());
+
+        return ce;
+    }
+
+    private String splitDateFromErgebnisString(String date) {
+        int index = date.indexOf(",");
+        return date.substring(index + 1);
+    }
+
+    private Date getDateFromCrawlErgebnisString(String date) {
         Date d;
         SimpleDateFormat formatter = new SimpleDateFormat("dd. MMMM yyyy");
         try {
@@ -142,45 +200,6 @@ public class Bwin {
         }
         return d;
     }
-    public void crawlErgebnisse(String url) {
-        WebDriver driver = new HtmlUnitDriver();
-        driver.get(url);
-        for (int i = 1; i <= driver.findElements(By.xpath(XPath.getAnzahlErgebnise())).size(); i++) {
-            String date = driver.findElements(By.xpath(XPath.getEregebnisTag(i))).get(0).getText();
-            for (int j = 1; j <= driver.findElements(By.xpath(XPath.getAnzahlErgebnis(i))).size(); j++) {
-                String mannschaften = driver.findElements(By.xpath(XPath.getErgebnisMannschaften(i, j))).get(0).getText();
-                String tore = driver.findElements(By.xpath(XPath.getErgebnisTore(i, j))).get(0).getText();
-                makeCrawlErgebnis(mannschaften, tore, date);
-            }
-        }
-        driver.close();
-
-    }
-    private void makeCrawlErgebnis(String mannschaften, String tore, String date) {
-        CrawlErgebnis ce = new CrawlErgebnis();
-        ce.setMannschaft_1(splitErgebnisMannschaf_1(mannschaften));
-        ce.setMannschaft_2(splitErgebnisMannschaf_2(mannschaften));
-        String halbzeitErg =  splitHalbzeitErgebnis(tore);
-        String gesamtErg =  splitGesamtErgebnis(tore);
-        ce.setH_tore_1(getToreM1(halbzeitErg));
-        ce.setH_tore_2(getToreM2(halbzeitErg));
-        ce.setTore_1(getToreM1(gesamtErg));
-        ce.setTore_2(getToreM2(gesamtErg));
-        ce.setDate(getDateFromCrawlErgebnisString(date));
-        if(ce.getTore_1() > ce.getTore_2()){
-            ce.setSieger("1");
-        }else if(ce.getTore_1() == ce.getTore_2()){
-            ce.setSieger("x");
-        }else{
-            ce.setSieger("2");
-        }
-         ce.print();
-         System.out.println("DATUM : "+ce.getDate());
-        
-
-    }
-    
-    
 
     private String splitHalbzeitErgebnis(String erg) {
         int index = erg.indexOf("(");
@@ -214,13 +233,14 @@ public class Bwin {
         }
 
     }
+
     private int getToreM2(String s) {
         int index = s.indexOf(":");
         try {
             Integer tore = new Integer(s.substring(index + 1));
             return tore;
         } catch (Exception e) {
-            logger.error("Fail to parse Tore to String: Try to parse: " + s.substring(0, index+1));
+            logger.error("Fail to parse Tore to String: Try to parse: " + s.substring(0, index + 1));
             return -1;
         }
 

@@ -1,5 +1,8 @@
 package webcrawler;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 
 // TODO: Auto-generated Javadoc
@@ -14,9 +17,15 @@ public class MakeQuery {
      * @param cf the cf
      * @return the specific begegnungs query
      */
-    public static String getSpecificBegegnungsQuery(CrawlInfos cf){
-        String query = "from Begegnung where datum = '" +WebCrawler.dbmanage.getHQLDateFormatFromDate(cf.getDate()) + "' AND mannschaft_1 = '" + cf.getErsteMannschaft()
-                + "' AND mannschaft_2 = '" + cf.getZweiteMannschaft() + "' ";
+    public static String getSpecificBegegnungsQuery(String mannschaft_1,String mannschaft_2, Date date){
+        String query = "from Begegnung where datum = '" +getHQLDateFormatFromDate(date) + "' AND mannschaft_1 = '" + mannschaft_1
+                + "' AND mannschaft_2 = '" + mannschaft_2 + "' ";
+        return query;
+    }
+    
+    public static String checkIfBegegnungHasAlreadyAErebnis(int begegnungsID)
+    {
+        String query = "from Ergebnis where begegnung = "+begegnungsID;
         return query;
     }
     
@@ -42,6 +51,10 @@ public class MakeQuery {
     
     public static String getQuoteFromBegegnungsId(int id){
         return "from Quote where begegnung = "+id;
+    }
+    
+    private static String getHQLDateFormatFromDate(Date date) {
+        return new SimpleDateFormat("yyyy-MM-dd").format(date);
     }
 
 }

@@ -20,118 +20,93 @@ public class Ergebnis {
     /** The id. */
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
-    
-    /** The m_1_tore. */
-    private int m_1_tore;
-    
-    /** The m_2_tore. */
-    private int m_2_tore;
-    
 
-    /** The sieger. */
+    private int m1_tore;
+    
+    private int m2_tore;
+    
+    private int m1_h_tore;
+    
+    private int m2_h_tore;
+    
     private String sieger;
     
-    /** The begegnung. */
     @OneToOne
-    @JoinColumn(name="begegnung_id")
+    @JoinColumn(name="begenung_id")
     private Begegnung begegnung;
+
     
-    /**
-     * Gets the id.
-     *
-     * @return the id
-     */
     public int getId() {
         return id;
     }
+
     
-    /**
-     * Sets the id.
-     *
-     * @param id the new id
-     */
     public void setId(int id) {
         this.id = id;
     }
-    
-    /**
-     * Gets the m_1_tore.
-     *
-     * @return the m_1_tore
-     */
-    public int getM_1_tore() {
-        return m_1_tore;
-    }
-    
-    /**
-     * Sets the m_1_tore.
-     *
-     * @param m_1_tore the new m_1_tore
-     */
-    public void setM_1_tore(int m_1_tore) {
-        this.m_1_tore = m_1_tore;
-    }
-    
-    /**
-     * Gets the m_2_tore.
-     *
-     * @return the m_2_tore
-     */
-    public int getM_2_tore() {
-        return m_2_tore;
-    }
-    
-    /**
-     * Sets the m_2_tore.
-     *
-     * @param m_2_tore the new m_2_tore
-     */
-    public void setM_2_tore(int m_2_tore) {
-        this.m_2_tore = m_2_tore;
-    }
-    
 
     
-    /**
-     * Gets the begegnung.
-     *
-     * @return the begegnung
-     */
-    public Begegnung getBegegnung() {
-        return begegnung;
-    }
-    
-    /**
-     * Sets the begegnung.
-     *
-     * @param begegnung the new begegnung
-     */
-    public void setBegegnung(Begegnung begegnung) {
-        this.begegnung = begegnung;
+    public int getM1_tore() {
+        return m1_tore;
     }
 
     
-    /**
-     * Gets the sieger.
-     *
-     * @return the sieger
-     */
+    public void setM1_tore(int m1_tore) {
+        this.m1_tore = m1_tore;
+    }
+
+    
+    public int getM2_tore() {
+        return m2_tore;
+    }
+
+    
+    public void setM2_tore(int m2_tore) {
+        this.m2_tore = m2_tore;
+    }
+
+    
+    public int getM1_h_tore() {
+        return m1_h_tore;
+    }
+
+    
+    public void setM1_h_tore(int m1_h_tore) {
+        this.m1_h_tore = m1_h_tore;
+    }
+
+    
+    public int getM2_h_tore() {
+        return m2_h_tore;
+    }
+
+    
+    public void setM2_h_tore(int m2_h_tore) {
+        this.m2_h_tore = m2_h_tore;
+    }
+
+    
     public String getSieger() {
         return sieger;
     }
 
     
-    /**
-     * Sets the sieger.
-     *
-     * @param sieger the new sieger
-     */
     public void setSieger(String sieger) {
         this.sieger = sieger;
     }
 
+    
+    public Begegnung getBegegnung() {
+        return begegnung;
+    }
 
     
+    public void setBegegnung(Begegnung begegnung) {
+        this.begegnung = begegnung;
+    }
+
+    
+   
 
 
 }
