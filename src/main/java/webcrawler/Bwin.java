@@ -33,7 +33,6 @@ public class Bwin {
 
     /** The logger. */
     private final Logger logger       = LoggerFactory.getLogger(Bwin.class);
-    
 
     /**
      * Instantiates a new bwin.
@@ -50,19 +49,14 @@ public class Bwin {
      * @param spieltyp the spieltyp
      */
     public void crawl(String url, String spieltyp) {
-        java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);
-        java.util.logging.Logger.getLogger("org.apache.http").setLevel(java.util.logging.Level.OFF);
+        logger.info("start crawling :" + spieltyp + "........");
         try {
-            
-            List<CrawlInfos> crawlInfos = getInfos(url, spieltyp);
-            for (CrawlInfos cf : crawlInfos) {
-                WebCrawler.dbmanage.saveCrawledInfo(cf);
-            }
+            crawlInfos(url, spieltyp);
         } catch (Exception e) {
-            logger.error("Fail to Crawl the following URL: "+url);
+            logger.error("Fail to Crawl the following URL: " + url);
             e.printStackTrace();
         }
-
+        logger.info("finished crawling :" + spieltyp);
     }
 
     private Date getDateFromCrawlInfosString(String date) {
@@ -91,18 +85,16 @@ public class Bwin {
      * @param spieltyp the spieltyp
      * @return the infos
      */
-    private List<CrawlInfos> getInfos(String url, String spieltyp) {
+    private void crawlInfos(String url, String spieltyp) {
         WebDriver driver = new HtmlUnitDriver();
-        List<CrawlInfos> crawlInfos = new ArrayList<CrawlInfos>();
         driver.get(url);
         for (int i = 1; i <= driver.findElements(By.xpath(XPath.getAnzahlSpieltage())).size(); i++) {
             String date = driver.findElements(By.xpath(XPath.getSpieltag(i))).get(0).getText();
             for (int j = 1; j <= driver.findElements(By.xpath(XPath.getAnzahlSpiele(i))).size(); j++) {
-                crawlInfos.add(getInfos(XPath.getBegegnung(i, j), driver, date, spieltyp));
+                WebCrawler.dbmanage.saveCrawledInfo(getInfos(XPath.getBegegnung(i, j), driver, date, spieltyp));
             }
         }
         driver.quit();
-        return crawlInfos;
     }
 
     /**
@@ -124,38 +116,36 @@ public class Bwin {
         b.setDate(getDateFromCrawlInfosString(date));
         b.setSpieltyp(spieltyp);
         b.setWettanbieter(this.WETTANBIETER);
-        b.print();
+        logger.info("match found: " + b.print());
         return b;
     }
 
     //---------------------------CRAWL ERGEBNIS-------------------------
 
-    public void crawlErgebnisse(String url) {
+    public void crawlErgebnisse(String url, String spieltyp) {
+        logger.info("start crawling results from :" + spieltyp + "........");
         try {
-            List<CrawlErgebnis> list = getErgebnisse(url);
-            for (CrawlErgebnis crawlErgebnis : list) {
-                WebCrawler.dbmanage.saveCrawlErgebnis(crawlErgebnis);
-            }
+            crawlErgebnisse(url);
+
         } catch (Exception e) {
-            logger.error("Fail to Crawl the following URL: "+url);
+            logger.error("Fail to Crawl the following URL: " + url);
             e.printStackTrace();
         }
+        logger.info("finished crawling results from :" + spieltyp + "........");
     }
 
-    private List<CrawlErgebnis> getErgebnisse(String url) {
+    private void crawlErgebnisse(String url) {
         WebDriver driver = new HtmlUnitDriver();
-        List<CrawlErgebnis> list = new ArrayList<CrawlErgebnis>();
         driver.get(url);
         for (int i = 1; i <= driver.findElements(By.xpath(XPath.getAnzahlErgebnise())).size(); i++) {
             String date = driver.findElements(By.xpath(XPath.getEregebnisTag(i))).get(0).getText();
             for (int j = 1; j <= driver.findElements(By.xpath(XPath.getAnzahlErgebnis(i))).size(); j++) {
                 String mannschaften = driver.findElements(By.xpath(XPath.getErgebnisMannschaften(i, j))).get(0).getText();
                 String tore = driver.findElements(By.xpath(XPath.getErgebnisTore(i, j))).get(0).getText();
-                list.add(makeCrawlErgebnis(mannschaften, tore, date));
+                WebCrawler.dbmanage.saveCrawlErgebnis(makeCrawlErgebnis(mannschaften, tore, date));
             }
         }
         driver.close();
-        return list;
     }
 
     private CrawlErgebnis makeCrawlErgebnis(String mannschaften, String tore, String date) {
@@ -176,9 +166,7 @@ public class Bwin {
         } else {
             ce.setSieger("2");
         }
-        ce.print();
-        System.out.println("DATUM : " + ce.getDate());
-
+        logger.info("found result:  "+ce.print());       
         return ce;
     }
 

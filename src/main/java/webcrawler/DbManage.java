@@ -40,11 +40,7 @@ public class DbManage {
      */
     public DbManage() {
         sessionFactory = getSessionFactory();
-        logger.debug("DEBUG MASSAGE");
-        logger.info("INFO MASSAGE");
-        logger.error("ERROR MASSAGE");
-   
-        
+
     }
 
     /**
@@ -72,8 +68,8 @@ public class DbManage {
         }
         return false;
     }
-    
-    private Boolean updateObject(Object o, String info){
+
+    private Boolean updateObject(Object o, String info) {
         Session session = sessionFactory.openSession();
         try {
             session.beginTransaction();
@@ -91,6 +87,76 @@ public class DbManage {
         }
         return false;
     }
+    private Boolean deleteObject(Object o, String info) {
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            session.delete(o);
+            session.getTransaction().commit();
+            logger.info("Sucessfully deleted 'Object': " + info);
+            return true;
+        } catch (Exception e) {
+            if (session.getTransaction() != null)
+                session.getTransaction().rollback();
+            logger.info("Error in delete Oject:  fail to save: " + info);
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return false;
+    }
+
+    public void updateALLQuote() {
+
+        List<Quote> qlist = (List<Quote>) getQuery("from Quote");
+        for (Quote temp : qlist) {
+            Wettanbieter w = getWettanbieterByName("Bwin");
+            temp.setWettanbieter(w);
+            updateObject(temp, printQuote(temp));
+        }
+    }
+    
+    public void deleteCompleteSpieltypQuery(){
+ 
+
+        List<HistoryQuote> list = (List<HistoryQuote>)getQuery("from HistoryQuote");        
+        for (HistoryQuote hq : list) {
+            if(hq.getQuote().getBegegnung().getSpieltyp().getId() == getSpieltypByName("Lega Pro A").getId()){
+                Begegnung b = hq.getQuote().getBegegnung();
+                Quote q = hq.getQuote();                
+                deleteObject(hq, printHistoryQuote(hq));
+                deleteObject(q, printQuote(q));
+                deleteObject(b, printBegegnung(b));
+               
+            }
+            logger.info("Found nothing to delete");
+        }
+        
+        List<Quote> qList = (List<Quote>)getQuery("from Quote");        
+        for (Quote q : qList) {
+            if(q.getBegegnung().getSpieltyp().getId() == getSpieltypByName("Lega Pro A").getId()){
+                Begegnung b = q.getBegegnung();
+                deleteObject(q, printQuote(q));
+                deleteObject(b, printBegegnung(b));
+               
+            }
+            logger.info("Found nothing to delete"+qList.size());
+            logger.info("ID"+q.getBegegnung().getSpieltyp().getId());
+        }
+        
+        List<Begegnung> bList = (List<Begegnung>)getQuery("from Begegnung");        
+        for (Begegnung b : bList) {
+            if(b.getSpieltyp().getId() == getSpieltypByName("Lega Pro A").getId()){
+
+                deleteObject(b, printBegegnung(b));
+               
+            }
+            logger.info("Found nothing to delete"+qList.size());
+
+        }
+        deleteObject(getSpieltypByName("Lega Pro A"), "SPIELTYP LEGA PRO A");
+
+    }
 
     /**
      * Save crawled info.
@@ -99,58 +165,65 @@ public class DbManage {
      */
     public void saveCrawledInfo(CrawlInfos cf) {
 
-        if (checkIfBegegnungAlreadyExist(cf.getErsteMannschaft(),cf.getZweiteMannschaft(),cf.getDate())) {
-            logger.info("Found Same Begegnung. Not saving them");
-            Begegnung b = getBegegnung(cf.getErsteMannschaft(),cf.getZweiteMannschaft(),cf.getDate());
+        if (checkIfBegegnungAlreadyExist(cf.getErsteMannschaft(), cf.getZweiteMannschaft(), cf.getDate())) {
+            logger.info("Match already exists. saving aborted!");
+            Begegnung b = getBegegnung(cf.getErsteMannschaft(), cf.getZweiteMannschaft(), cf.getDate());
             List<Quote> list = (List<Quote>) getQuery(MakeQuery.getQuoteFromBegegnungsId(b.getId()));
             if (list.size() == 1) {
-                Quote latest = convertCrawlInfos(cf, b);
+                Wettanbieter w = getWettanbieterByName(cf.getWettanbieter());
+                Quote latest = convertCrawlInfos(cf, b, w);
                 Quote old = list.get(0);
                 //Wenn die Quote nicht gleich ist
-                if(! compareQuoteWithCrawlInfos(old,  latest))
-                {
-                    updateQuoteAndSaveToHistory(old,latest);  
+                logger.info("checking if 'Quote' has changed");
+                if (!compareQuoteWithCrawlInfos(old, latest)) {
+                    logger.info("Quote Changed: Update Quote and save old to History");
+                    updateQuoteAndSaveToHistory(old, latest);
+                } else {
+                    logger.info("Quote has not changed");
                 }
+            } else if (list.size() == 0) {
+                logger.error("Found no 'Quote' for match: " + printBegegnung(b));
+            } else {
+                logger.error("Found more then one 'Quote' for match: " + printBegegnung(b));
             }
 
         } else {
+            logger.info("match doesnt exists in database. save match to database");
             Spieltyp s = getSpieltypByName(cf.getSpieltyp());
             Wettanbieter w = getWettanbieterByName(cf.getWettanbieter());
             Begegnung b = convertCrawlInfos(cf, s);
             saveObject(b, printBegegnung(b));
-            Quote q = convertCrawlInfos(cf, b);
+            Quote q = convertCrawlInfos(cf, b, w);
             saveObject(q, printQuote(q));
         }
 
     }
-    
-    public void saveCrawlErgebnis(CrawlErgebnis ce){
-        
-        if(checkIfBegegnungAlreadyExist(ce.getMannschaft_1(),ce.getMannschaft_2(),ce.getDate())){
-            logger.info("FOUDN Ergebnis for Begenung");
-            Begegnung b = getBegegnung(ce.getMannschaft_1(),ce.getMannschaft_2(),ce.getDate());
-            if(checkIfEregebnisAlreadySet(b))
-            {
-                logger.info(" Ergebnis Already exists for Begenung");
-            }else
-            {
-                Ergebnis e = convertCrawlErgebnisToErgebnis(ce,b);
+
+    public void saveCrawlErgebnis(CrawlErgebnis ce) {
+
+        if (checkIfBegegnungAlreadyExist(ce.getMannschaft_1(), ce.getMannschaft_2(), ce.getDate())) {
+            logger.info("found match for result");
+            Begegnung b = getBegegnung(ce.getMannschaft_1(), ce.getMannschaft_2(), ce.getDate());
+            if (checkIfEregebnisAlreadySet(b)) {
+                logger.info(" result already exists for match: saving aborted");
+            } else {
+                Ergebnis e = convertCrawlErgebnisToErgebnis(ce, b);
                 saveObject(e, printErgebnis(e));
             }
-            
+
         }
-        
+
     }
-    
-    private Boolean checkIfEregebnisAlreadySet(Begegnung b){
-        List<Ergebnis> erg = (List<Ergebnis>)getQuery(MakeQuery.checkIfBegegnungHasAlreadyAErebnis(b.getId()));
-        if(erg.size() > 0){
+
+    private Boolean checkIfEregebnisAlreadySet(Begegnung b) {
+        List<Ergebnis> erg = (List<Ergebnis>) getQuery(MakeQuery.checkIfBegegnungHasAlreadyAErebnis(b.getId()));
+        if (erg.size() > 0) {
             return true;
         }
         return false;
     }
-    
-    private Ergebnis convertCrawlErgebnisToErgebnis(CrawlErgebnis ce, Begegnung b){
+
+    private Ergebnis convertCrawlErgebnisToErgebnis(CrawlErgebnis ce, Begegnung b) {
         Ergebnis e = new Ergebnis();
         e.setM1_h_tore(ce.getH_tore_1());
         e.setM2_h_tore(ce.getH_tore_2());
@@ -160,20 +233,21 @@ public class DbManage {
         e.setBegegnung(b);
         return e;
     }
-    
-    private void updateQuoteAndSaveToHistory(Quote old, Quote latest){
-       logger.info("FOUND CHNAGED QUOTE");
+
+    private void updateQuoteAndSaveToHistory(Quote old, Quote latest) {
+        logger.info("FOUND CHNAGED QUOTE");
         HistoryQuote hq = new HistoryQuote();
         hq.setDatum(new Date());
         hq.setQuote(old);
         hq.setQuote1(old.getQuoteM1());
         hq.setQuote2(old.getQuoteM2());
         hq.setQuoteX(old.getQuoteX());
-        saveObject(hq, printHistoryQuote(hq));
+
         old.setQuoteM1(latest.getQuoteM1());
         old.setQuoteM2(latest.getQuoteM2());
         old.setQuoteX(latest.getQuoteX());
-        updateObject(old, printQuote(old));           
+        updateObject(old, printQuote(old));
+        saveObject(hq, printHistoryQuote(hq));
     }
 
     private Boolean compareQuoteWithCrawlInfos(Quote old, Quote latest) {
@@ -189,9 +263,9 @@ public class DbManage {
      * @param cf the cf
      * @return the boolean
      */
-    private Boolean checkIfBegegnungAlreadyExist(String mannschaft_1,String mannschaft_2, Date date) {
+    private Boolean checkIfBegegnungAlreadyExist(String mannschaft_1, String mannschaft_2, Date date) {
         List<Begegnung> begegnungen = null;
-        begegnungen = (List<Begegnung>) getQuery(MakeQuery.getSpecificBegegnungsQuery(mannschaft_1,mannschaft_2,date));
+        begegnungen = (List<Begegnung>) getQuery(MakeQuery.getSpecificBegegnungsQuery(mannschaft_1, mannschaft_2, date));
         if (begegnungen.size() == 1) {
             return true;
         } else if (begegnungen.size() == 0) {
@@ -206,9 +280,9 @@ public class DbManage {
 
     }
 
-    private Begegnung getBegegnung(String mannschaft_1,String mannschaft_2, Date date) {
+    private Begegnung getBegegnung(String mannschaft_1, String mannschaft_2, Date date) {
         List<Begegnung> begegnungen = null;
-        begegnungen = (List<Begegnung>) getQuery(MakeQuery.getSpecificBegegnungsQuery(mannschaft_1,mannschaft_2,date));
+        begegnungen = (List<Begegnung>) getQuery(MakeQuery.getSpecificBegegnungsQuery(mannschaft_1, mannschaft_2, date));
         if (begegnungen.size() == 1) {
             return begegnungen.get(0);
         } else if (begegnungen.size() == 0) {
@@ -221,8 +295,6 @@ public class DbManage {
             return begegnungen.get(0);
         }
     }
-    
-   
 
     /**
      * Gets the query.
@@ -338,14 +410,12 @@ public class DbManage {
      * @return the date from string
      */
 
-
     /**
      * Gets the date format from string.
      *
      * @param date the date
      * @return the date format from string
      */
-
 
     /**
      * Convert crawl infos.
@@ -371,12 +441,13 @@ public class DbManage {
      * @param begegnung the begegnung
      * @return the quote
      */
-    private Quote convertCrawlInfos(CrawlInfos crawlInfos, Begegnung begegnung) {
+    private Quote convertCrawlInfos(CrawlInfos crawlInfos, Begegnung begegnung, Wettanbieter w) {
         Quote quote = new Quote();
         quote.setQuoteM1(getFloatFromString(crawlInfos.getHeimMannschaftQuote()));
         quote.setQuoteX(getFloatFromString(crawlInfos.getUnentschiedenQuote()));
         quote.setQuoteM2(getFloatFromString(crawlInfos.getZweiteMannschaftQuote()));
         quote.setBegegnung(begegnung);
+        quote.setWettanbieter(w);
         return quote;
     }
 
@@ -445,17 +516,18 @@ public class DbManage {
      * @return the string
      */
     private String printCrawlInfos(CrawlInfos cf) {
-        String info = "CrawlInfos: " + cf.getErsteMannschaft() + " vs " + cf.getZweiteMannschaft() + " am :"
-                + cf.getDate();
+        String info = "CrawlInfos: " + cf.getErsteMannschaft() + " vs " + cf.getZweiteMannschaft() + " am :" + cf.getDate();
         return info;
     }
-    
-    private String printHistoryQuote(HistoryQuote hq){
-        return "Quote change by:"+printQuote(hq.getQuote())+" \n\r to :"+hq.getQuote1()+"|"+hq.getQuoteX()+"|"+hq.getQuote2();
+
+    private String printHistoryQuote(HistoryQuote hq) {
+        return "HistoryQuote: Quote change from:" + printQuote(hq.getQuote()) + "  to :" + hq.getQuote1() + "|" + hq.getQuoteX() + "|"
+                + hq.getQuote2();
     }
-    
-    private String printErgebnis(Ergebnis e){
-        return "Ergebnis: "+e.getBegegnung().getMannschaft_1()+" vs "+e.getBegegnung().getMannschaft_2()+" "+e.getM1_tore()+":"+e.getM2_tore()+" ("+e.getM1_h_tore()+":"+e.getM2_h_tore()+")";
+
+    private String printErgebnis(Ergebnis e) {
+        return "Ergebnis: " + e.getBegegnung().getMannschaft_1() + " vs " + e.getBegegnung().getMannschaft_2() + " " + e.getM1_tore() + ":"
+                + e.getM2_tore() + " (" + e.getM1_h_tore() + ":" + e.getM2_h_tore() + ")";
     }
 
 }

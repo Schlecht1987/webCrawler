@@ -22,6 +22,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import webcrawler.Bwin;
 import webcrawler.CrawlErgebnis;
@@ -38,7 +40,7 @@ public class Main {
 
 
 
-
+    private static final Logger logger       = LoggerFactory.getLogger(Main.class);
     /**
      * The main method.
      *
@@ -46,7 +48,16 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        runEndless();
+        runEndless2();
+    }
+    
+    public static void runEndless2(){
+        int i = 1;
+        while (true) {
+            logger.info("RUNNING NEW CRAWL "+i); 
+            WebCrawler.crawl();
+            i++;
+        }
     }
     
     public static void runEndless(){
@@ -55,24 +66,12 @@ public class Main {
         t.schedule(new TimerTask(){
    
            @Override
-           public void run() {
-               
-               long zstVorher;
-               long zstNachher;
-
-               zstVorher = System.currentTimeMillis();
-               System.out.println("RUNNING NEW CRAWL");   
+           public void run() {              
+              logger.info("RUNNING NEW CRAWL");   
                WebCrawler.crawl();
-
-               zstNachher = System.currentTimeMillis();
-               System.out.println("Zeit benötigt: " + ((zstNachher - zstVorher)/1000) + " sec");
-               
-
-              System.out.println("Finish Running Crawl");  
-              System.out.println("Starting new run in: "+ (11100 - ((zstNachher - zstVorher)/1000)) + " sec");
            }
    
-        }, 0, 11100000); 
+        }, 0, 120000); 
     }
     
     public static void run(){

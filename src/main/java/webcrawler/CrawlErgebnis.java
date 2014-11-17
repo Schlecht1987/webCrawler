@@ -1,5 +1,6 @@
 package webcrawler;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -71,11 +72,10 @@ public class CrawlErgebnis {
         this.h_tore_2 = h_tore_2;
     }
 
-    public void print(){
-        System.out.println(getDate());
-        System.out.println("Mannschaft 1: "+getMannschaft_1()+" Tore "+getTore_1()+" halbzeit: "+getH_tore_1());
-        System.out.println("Mannschaft 2: "+getMannschaft_2()+" Tore "+getTore_2()+" halbzeit: "+getH_tore_2());
-        System.out.println("Sieger: "+getSieger());
+    public String print(){
+        String temp = "  "+getHQLDateFormatFromDate(getDate())+" Sieger:"+getSieger()+" | "+getMannschaft_1()+" ";
+        temp += getTore_1()+":"+getTore_2()+" "+getMannschaft_2()+"    Halbzeit:("+getH_tore_1()+":"+getH_tore_2()+")";
+        return temp;
     }
 
     
@@ -86,5 +86,8 @@ public class CrawlErgebnis {
     
     public void setDate(Date date) {
         this.date = date;
+    }
+    private static String getHQLDateFormatFromDate(Date date) {
+        return new SimpleDateFormat("yyyy-MM-dd").format(date);
     }
 }

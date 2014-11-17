@@ -46,7 +46,7 @@ public class MakeQuery {
      * @return the wettanbieter by name query
      */
     public static String getWettanbieterByNameQuery(String name){
-        return "from Spieltyp where name = '" + name + "'";
+        return "from Wettanbieter where name = '" + name + "'";
     }
     
     public static String getQuoteFromBegegnungsId(int id){

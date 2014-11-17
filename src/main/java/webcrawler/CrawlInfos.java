@@ -1,5 +1,6 @@
 package webcrawler;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 // TODO: Auto-generated Javadoc
@@ -127,13 +128,15 @@ public class CrawlInfos {
     /**
      * Prints the.
      */
-    public void print(){
-        System.out.println(this.getErsteMannschaft()+" "+this.getHeimMannschaftQuote()+" | "+this.getUnentschiedenQuote()+" | "+this.getZweiteMannschaft()+" "+ this.getZweiteMannschaftQuote());
+    public String print(){
+        return "    "+getHQLDateFormatFromDate(this.getDate() )+" --- "+this.getErsteMannschaft()+" "+this.getHeimMannschaftQuote()+" | "+this.getUnentschiedenQuote()+" | "+this.getZweiteMannschaftQuote()+" "+this.getZweiteMannschaft()+" --- from "+this.wettanbieter;
     }
 
     
    
-
+    private static String getHQLDateFormatFromDate(Date date) {
+        return new SimpleDateFormat("yyyy-MM-dd").format(date);
+    }
     
     /**
      * Gets the spieltyp.

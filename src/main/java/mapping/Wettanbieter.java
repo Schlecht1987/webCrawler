@@ -30,6 +30,10 @@ public class Wettanbieter {
     @OneToMany (mappedBy = "wettanbieter")
     private Collection<Quote> quote = new ArrayList<Quote>();
     
+    
+    public Wettanbieter(){
+        
+    }
     /**
      * Instantiates a new wettanbieter.
      *
