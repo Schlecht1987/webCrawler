@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import lib.NMAClientLib;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.openqa.selenium.By;
@@ -11,6 +13,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+
+
 
 // TODO: Auto-generated Javadoc
 /**
@@ -63,6 +68,13 @@ public class WebCrawler {
     public static final String CHAMPIONS_LEAGUE_BEG_URL = "http://sports.bwin.com/de/sports/4/1606/wetten/champions-league";
     
     public static final String CHAMPIONS_LEAGUE_ERG_URL = "";
+    
+    
+    public static final String WORLD_FRIENDSHIP = "Welt Freundschaftsspiele";
+    
+    public static final String WORLD_FRIENDSHIP_BEG_URL = "http://sports.bwin.com/de/sports/4/433/wette/freundschaftsspiele";
+    
+    public static final String WORLD_FRIENDSHIP_ERG_URL = "https://sports.bwin.com/de/sports/results?sport=4&region=6&league=433&period=OneWeek&sort=Date";
     /** The dbmanage. */
     public static DbManage dbmanage;
     
@@ -71,13 +83,15 @@ public class WebCrawler {
     /**
      * Crawl.
      */
-    public static void crawl() {
+    public static void crawl(int count) {
         if (dbmanage == null) {
             dbmanage = new DbManage();
         }
-        
-         crawlBwin();
-          crawlErgebnisseBewin();
+       
+         crawlBwin(count);
+         crawlErgebnisseBewin(count);
+
+         
         dbmanage.sessionFactory.close();
         dbmanage= null;
     }
@@ -86,7 +100,7 @@ public class WebCrawler {
     /**
      * Crawl bwin.
      */
-    public static void crawlBwin() {
+    public static void crawlBwin(int count) {
         logger.info("start crawling matches....");
         long zstVorher;
         long zstNachher;
@@ -97,12 +111,16 @@ public class WebCrawler {
         bwin.crawl(PREMIER_LEAGUE_BEG_URL, PREMIER_LEAGUE);      
         bwin.crawl(SERIE_A_BEG_URL, SERIE_A);
         bwin.crawl(LIGUE_1_BEG_URL, LIGUE_1);    
+     
         zstNachher = System.currentTimeMillis();
         logger.info("##############finish crawling matches: Time: "+ ((zstNachher - zstVorher)/1000) + " sec ################");
+        if(((zstNachher - zstVorher)/1000)< 60){
+            notifiy("ToFastCrawl","Something wrong. To fast crawl: Time :"+((zstNachher - zstVorher)/1000)+ "At Crawl number: "+count);
+        }
         
     }
     
-    public static void crawlErgebnisseBewin(){
+    public static void crawlErgebnisseBewin(int count){
         logger.info("start crawling results....");
         long zstVorher;
         long zstNachher;
@@ -113,8 +131,21 @@ public class WebCrawler {
         bwin.crawlErgebnisse(PREMIER_LEAGUE_ERG_URL,PREMIER_LEAGUE);
         bwin.crawlErgebnisse(SERIE_A_ERG_URL,SERIE_A);
         bwin.crawlErgebnisse(LIGUE_1_ERG_URL,LIGUE_1);
+        bwin.crawlErgebnisse(WORLD_FRIENDSHIP_ERG_URL,WORLD_FRIENDSHIP);
         zstNachher = System.currentTimeMillis();
         logger.info("############finish crawling results: Time: "+ ((zstNachher - zstVorher)/1000) + " sec ################");
+        if(((zstNachher - zstVorher)/1000)< 60){
+            notifiy("ToFastCrawl","Something wrong. To fast crawl: Time :"+((zstNachher - zstVorher)/1000)+ "At Crawl number: "+count);
+        }
+    }
+    
+    public static void notifiy(String event, String desc){
+        if (NMAClientLib.notify("Webcrawler", event, desc, 1, "99444000825303dc5fd00f3f412126a0d4577116b11908d6") == 1) {
+            logger.info("notification sent to mobile device: "+event+" , "+desc);
+           
+        } else {
+            logger.info(NMAClientLib.getLastError());
+        }
     }
 
 }

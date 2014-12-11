@@ -87,6 +87,7 @@ public class DbManage {
         }
         return false;
     }
+
     private Boolean deleteObject(Object o, String info) {
         Session session = sessionFactory.openSession();
         try {
@@ -105,53 +106,60 @@ public class DbManage {
         }
         return false;
     }
-
-    public void updateALLQuote() {
-
-        List<Quote> qlist = (List<Quote>) getQuery("from Quote");
-        for (Quote temp : qlist) {
-            Wettanbieter w = getWettanbieterByName("Bwin");
-            temp.setWettanbieter(w);
-            updateObject(temp, printQuote(temp));
-        }
-    }
     
-    public void deleteCompleteSpieltypQuery(){
- 
 
-        List<HistoryQuote> list = (List<HistoryQuote>)getQuery("from HistoryQuote");        
+
+   
+
+    public void deleteBegegnung(String mannschaft_1, String mannschaft_2, Date date) {
+        Begegnung b = getBegegnung(mannschaft_1, mannschaft_2, date);
+        List<Quote> quoten = (List<Quote>) getQuery(MakeQuery.getQuoteFromBegegnungsId(b.getId()));
+        for (Quote quote : quoten) {
+            List<HistoryQuote> hQuoten = (List<HistoryQuote>) getQuery(MakeQuery.getHistoryQuoteFromQuoteId(quote.getId()));
+            for (HistoryQuote historyQuote : hQuoten) {
+                deleteObject(historyQuote, printHistoryQuote(historyQuote));
+            }
+            deleteObject(quote, printQuote(quote));
+        }
+        deleteObject(b, printBegegnung(b));
+
+    }
+
+    public void deleteCompleteSpieltypQuery() {
+
+        List<HistoryQuote> list = (List<HistoryQuote>) getQuery("from HistoryQuote");
         for (HistoryQuote hq : list) {
-            if(hq.getQuote().getBegegnung().getSpieltyp().getId() == getSpieltypByName("Lega Pro A").getId()){
+            if (hq.getQuote().getBegegnung().getSpieltyp().getId() == getSpieltypByName("Lega Pro A").getId()) {
                 Begegnung b = hq.getQuote().getBegegnung();
-                Quote q = hq.getQuote();                
+                Quote q = hq.getQuote();
                 deleteObject(hq, printHistoryQuote(hq));
                 deleteObject(q, printQuote(q));
                 deleteObject(b, printBegegnung(b));
-               
+
             }
             logger.info("Found nothing to delete");
         }
-        
-        List<Quote> qList = (List<Quote>)getQuery("from Quote");        
+
+        List<Quote> qList = (List<Quote>) getQuery("from Quote");
         for (Quote q : qList) {
-            if(q.getBegegnung().getSpieltyp().getId() == getSpieltypByName("Lega Pro A").getId()){
+            if (q.getBegegnung().getSpieltyp().getId() == getSpieltypByName("Lega Pro A").getId()) {
                 Begegnung b = q.getBegegnung();
                 deleteObject(q, printQuote(q));
                 deleteObject(b, printBegegnung(b));
-               
+
             }
-            logger.info("Found nothing to delete"+qList.size());
-            logger.info("ID"+q.getBegegnung().getSpieltyp().getId());
+            logger.info("Found nothing to delete" + qList.size());
+            logger.info("ID" + q.getBegegnung().getSpieltyp().getId());
         }
-        
-        List<Begegnung> bList = (List<Begegnung>)getQuery("from Begegnung");        
+
+        List<Begegnung> bList = (List<Begegnung>) getQuery("from Begegnung");
         for (Begegnung b : bList) {
-            if(b.getSpieltyp().getId() == getSpieltypByName("Lega Pro A").getId()){
+            if (b.getSpieltyp().getId() == getSpieltypByName("Lega Pro A").getId()) {
 
                 deleteObject(b, printBegegnung(b));
-               
+
             }
-            logger.info("Found nothing to delete"+qList.size());
+            logger.info("Found nothing to delete" + qList.size());
 
         }
         deleteObject(getSpieltypByName("Lega Pro A"), "SPIELTYP LEGA PRO A");

@@ -52,6 +52,9 @@ public class MakeQuery {
     public static String getQuoteFromBegegnungsId(int id){
         return "from Quote where begegnung = "+id;
     }
+    public static String getHistoryQuoteFromQuoteId(int id){
+        return "from HistoryQuote where quote = "+id;
+    }
     
     private static String getHQLDateFormatFromDate(Date date) {
         return new SimpleDateFormat("yyyy-MM-dd").format(date);

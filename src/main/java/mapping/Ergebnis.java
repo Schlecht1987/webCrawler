@@ -20,15 +20,20 @@ public class Ergebnis {
     /** The id. */
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
-
+    
+    @JoinColumn(name="m1_tore")
     private int m1_tore;
     
+    @JoinColumn(name="m2_tore")
     private int m2_tore;
     
+    @JoinColumn(name="m1_h_tore")
     private int m1_h_tore;
     
+    @JoinColumn(name="m2_h_tore")
     private int m2_h_tore;
     
+    @JoinColumn(name="sieger")
     private String sieger;
     
     @OneToOne

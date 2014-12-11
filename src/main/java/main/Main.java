@@ -25,6 +25,8 @@ import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+
 import webcrawler.Bwin;
 import webcrawler.CrawlErgebnis;
 import webcrawler.DbManage;
@@ -51,12 +53,21 @@ public class Main {
         runEndless2();
     }
     
+    
+
+    
     public static void runEndless2(){
         int i = 1;
-        while (true) {
+        Boolean go = true;
+        while (go) {
             logger.info("RUNNING NEW CRAWL "+i); 
-            WebCrawler.crawl();
+            WebCrawler.crawl(i);
             i++;
+            if(i == 200)
+            {
+                WebCrawler.notifiy("TO Fast Crawlings", "Run 200 finished");
+                go = false;
+            }
         }
     }
     
@@ -68,7 +79,7 @@ public class Main {
            @Override
            public void run() {              
               logger.info("RUNNING NEW CRAWL");   
-               WebCrawler.crawl();
+               WebCrawler.crawl(1);
            }
    
         }, 0, 120000); 
@@ -80,7 +91,7 @@ public class Main {
 
         zstVorher = System.currentTimeMillis();
         System.out.println("RUNNING NEW CRAWL");   
-        WebCrawler.crawl();
+        WebCrawler.crawl(1);
 
         zstNachher = System.currentTimeMillis();
         System.out.println("Zeit benötigt: " + ((zstNachher - zstVorher)/1000) + " sec");

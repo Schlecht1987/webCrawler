@@ -134,7 +134,7 @@ public class Bwin {
         logger.info("finished crawling results from :" + spieltyp + "........");
     }
 
-    private void crawlErgebnisse(String url) {
+    private void crawlErgebnisse(String url)  {
         WebDriver driver = new HtmlUnitDriver();
         driver.get(url);
         for (int i = 1; i <= driver.findElements(By.xpath(XPath.getAnzahlErgebnise())).size(); i++) {
@@ -148,12 +148,27 @@ public class Bwin {
         driver.close();
     }
 
-    private CrawlErgebnis makeCrawlErgebnis(String mannschaften, String tore, String date) {
+    private CrawlErgebnis makeCrawlErgebnis(String mannschaften, String tore, String date)  {
         CrawlErgebnis ce = new CrawlErgebnis();
         ce.setMannschaft_1(splitErgebnisMannschaf_1(mannschaften));
         ce.setMannschaft_2(splitErgebnisMannschaf_2(mannschaften));
-        String halbzeitErg = splitHalbzeitErgebnis(tore);
-        String gesamtErg = splitGesamtErgebnis(tore);
+        String halbzeitErg = "0:0";
+        String gesamtErg = "0:0";
+        
+        if(tore.contains("Verschoben")){
+            logger.info("match verschoben: try to delete match");
+            WebCrawler.dbmanage.deleteBegegnung(splitErgebnisMannschaf_1(mannschaften),splitErgebnisMannschaf_2(mannschaften),getDateFromCrawlErgebnisString(date));
+            return ce;
+        }
+        
+        if(tore.contains("(")){
+             halbzeitErg = splitHalbzeitErgebnis(tore);
+             gesamtErg = splitGesamtErgebnis(tore);
+        
+        }else if(tore.length()<6){
+            halbzeitErg = tore;
+            gesamtErg = tore;        
+        }
         ce.setH_tore_1(getToreM1(halbzeitErg));
         ce.setH_tore_2(getToreM2(halbzeitErg));
         ce.setTore_1(getToreM1(gesamtErg));
@@ -166,8 +181,8 @@ public class Bwin {
         } else {
             ce.setSieger("2");
         }
-        logger.info("found result:  "+ce.print());       
-        return ce;
+        logger.info("found result:  "+ce.print()); 
+      return ce;
     }
 
     private String splitDateFromErgebnisString(String date) {
@@ -195,8 +210,10 @@ public class Bwin {
     }
 
     private String splitGesamtErgebnis(String erg) {
-        int index = erg.indexOf("(");
-        return erg.substring(0, index - 1);
+
+            int index = erg.indexOf("(");
+            return erg.substring(0, index - 1);
+
     }
 
     private String splitErgebnisMannschaf_1(String erg) {

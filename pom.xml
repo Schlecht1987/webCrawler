@@ -4,6 +4,7 @@
 	<groupId>hfroemming</groupId>
 	<artifactId>webcrawler</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -30,9 +31,9 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-  <groupId>org.slf4j</groupId>
-  <artifactId>slf4j-log4j12</artifactId>
-  <version>1.7.7</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.7</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -65,6 +66,9 @@
 			<artifactId>sesame-rio-api</artifactId>
 			<version>2.7.2</version>
 		</dependency>
+
+
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -106,7 +110,7 @@
 						<phase>package</phase> <!-- bind to the packaging phase -->
 						<goals>
 							<goal>single</goal>
-						</goals>
+						</goals>						
 					</execution>
 				</executions>
 			</plugin>
