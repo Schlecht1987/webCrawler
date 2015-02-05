@@ -135,7 +135,7 @@ public class CrawlInfos {
     
    
     private static String getHQLDateFormatFromDate(Date date) {
-        return new SimpleDateFormat("yyyy-MM-dd").format(date);
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
     }
     
     /**

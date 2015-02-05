@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class Quote.
@@ -46,6 +49,7 @@ public class Quote {
     
     /** The history quoten. */
     @OneToMany (mappedBy = "quote")
+    @Cascade({CascadeType.SAVE_UPDATE})
     private Collection<HistoryQuote> historyQuoten = new ArrayList<HistoryQuote>();
     
     /**

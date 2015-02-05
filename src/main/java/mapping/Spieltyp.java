@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class Spieltyp.
@@ -30,6 +33,7 @@ public class Spieltyp {
     
     /** The begegnung. */
     @OneToMany (mappedBy = "spieltyp")
+    @Cascade({CascadeType.SAVE_UPDATE})
     private Collection<Begegnung> begegnung = new ArrayList<Begegnung>();
 
     /**

@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class Wettanbieter.
@@ -27,6 +30,7 @@ public class Wettanbieter {
     private String name;
     
     /** The quote. */
+    @Cascade({CascadeType.SAVE_UPDATE})
     @OneToMany (mappedBy = "wettanbieter")
     private Collection<Quote> quote = new ArrayList<Quote>();
     

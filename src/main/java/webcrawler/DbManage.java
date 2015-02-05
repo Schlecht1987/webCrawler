@@ -10,6 +10,7 @@ import java.util.List;
 import mapping.Begegnung;
 import mapping.Ergebnis;
 import mapping.HistoryQuote;
+import mapping.Mannschaft;
 import mapping.Quote;
 import mapping.Spieltyp;
 import mapping.Wettanbieter;
@@ -106,13 +107,34 @@ public class DbManage {
         }
         return false;
     }
-    
 
-
-   
+    /**
+     * Gets the query.
+     *
+     * @param query the query
+     * @return the query
+     */
+    private List<?> getQuery(String query) {
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            Query q = session.createQuery(query);
+            List<?> l = q.list();
+            session.getTransaction().commit();
+            return l;
+        } catch (Exception e) {
+            if (session.getTransaction() != null)
+                session.getTransaction().rollback();
+            logger.info("Error in getQuery: query fail: " + query);
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
 
     public void deleteBegegnung(String mannschaft_1, String mannschaft_2, Date date) {
-        Begegnung b = getBegegnung(mannschaft_1, mannschaft_2, date);
+        Begegnung b = getBegegnung(getMannschaftFromString(mannschaft_1).getId(), getMannschaftFromString(mannschaft_2).getId(), date);
         List<Quote> quoten = (List<Quote>) getQuery(MakeQuery.getQuoteFromBegegnungsId(b.getId()));
         for (Quote quote : quoten) {
             List<HistoryQuote> hQuoten = (List<HistoryQuote>) getQuery(MakeQuery.getHistoryQuoteFromQuoteId(quote.getId()));
@@ -172,10 +194,11 @@ public class DbManage {
      * @param cf the cf
      */
     public void saveCrawledInfo(CrawlInfos cf) {
-
-        if (checkIfBegegnungAlreadyExist(cf.getErsteMannschaft(), cf.getZweiteMannschaft(), cf.getDate())) {
+        Mannschaft m1 = createMannschaftIfNotExists(cf.getErsteMannschaft());
+        Mannschaft m2 = createMannschaftIfNotExists(cf.getZweiteMannschaft());
+        if (checkIfBegegnungAlreadyExist(m1.getId(), m2.getId(), cf.getDate())) {
             logger.info("Match already exists. saving aborted!");
-            Begegnung b = getBegegnung(cf.getErsteMannschaft(), cf.getZweiteMannschaft(), cf.getDate());
+            Begegnung b = getBegegnung(m1.getId(), m2.getId(), cf.getDate());
             List<Quote> list = (List<Quote>) getQuery(MakeQuery.getQuoteFromBegegnungsId(b.getId()));
             if (list.size() == 1) {
                 Wettanbieter w = getWettanbieterByName(cf.getWettanbieter());
@@ -199,7 +222,7 @@ public class DbManage {
             logger.info("match doesnt exists in database. save match to database");
             Spieltyp s = getSpieltypByName(cf.getSpieltyp());
             Wettanbieter w = getWettanbieterByName(cf.getWettanbieter());
-            Begegnung b = convertCrawlInfos(cf, s);
+            Begegnung b = convertCrawlInfos(cf, s, m1, m2);
             saveObject(b, printBegegnung(b));
             Quote q = convertCrawlInfos(cf, b, w);
             saveObject(q, printQuote(q));
@@ -209,16 +232,27 @@ public class DbManage {
 
     public void saveCrawlErgebnis(CrawlErgebnis ce) {
 
-        if (checkIfBegegnungAlreadyExist(ce.getMannschaft_1(), ce.getMannschaft_2(), ce.getDate())) {
-            logger.info("found match for result");
-            Begegnung b = getBegegnung(ce.getMannschaft_1(), ce.getMannschaft_2(), ce.getDate());
-            if (checkIfEregebnisAlreadySet(b)) {
-                logger.info(" result already exists for match: saving aborted");
-            } else {
-                Ergebnis e = convertCrawlErgebnisToErgebnis(ce, b);
-                saveObject(e, printErgebnis(e));
-            }
+        if (checkIfMannschaftAlreadyExist(ce.getMannschaft_1()) && checkIfMannschaftAlreadyExist(ce.getMannschaft_2())) {
+            int id_m1 = getMannschaftFromString(ce.getMannschaft_1()).getId();
+            int id_m2 = getMannschaftFromString(ce.getMannschaft_2()).getId();
+            if (checkIfBegegnungAlreadyExist(id_m1, id_m1, ce.getDate())) {
+                logger.info("found match for result");
+                Begegnung b = getBegegnung(id_m1, id_m2, ce.getDate());
+                if (checkIfEregebnisAlreadySet(b)) {
+                    logger.info(" result already exists for match: saving aborted");
+                } else {
+                    Ergebnis e = convertCrawlErgebnisToErgebnis(ce, b);
+                    saveObject(e, printErgebnis(e));
+                }
 
+            }else
+            {
+                logger.info("found NO match for result");
+            }
+            
+        }else
+        {
+            logger.error("Keine Mannschaft gefunden für das Ergebnis");
         }
 
     }
@@ -271,7 +305,7 @@ public class DbManage {
      * @param cf the cf
      * @return the boolean
      */
-    private Boolean checkIfBegegnungAlreadyExist(String mannschaft_1, String mannschaft_2, Date date) {
+    private Boolean checkIfBegegnungAlreadyExist(int mannschaft_1, int mannschaft_2, Date date) {
         List<Begegnung> begegnungen = null;
         begegnungen = (List<Begegnung>) getQuery(MakeQuery.getSpecificBegegnungsQuery(mannschaft_1, mannschaft_2, date));
         if (begegnungen.size() == 1) {
@@ -288,7 +322,7 @@ public class DbManage {
 
     }
 
-    private Begegnung getBegegnung(String mannschaft_1, String mannschaft_2, Date date) {
+    private Begegnung getBegegnung(int mannschaft_1, int mannschaft_2, Date date) {
         List<Begegnung> begegnungen = null;
         begegnungen = (List<Begegnung>) getQuery(MakeQuery.getSpecificBegegnungsQuery(mannschaft_1, mannschaft_2, date));
         if (begegnungen.size() == 1) {
@@ -304,29 +338,36 @@ public class DbManage {
         }
     }
 
-    /**
-     * Gets the query.
-     *
-     * @param query the query
-     * @return the query
-     */
-    private List<?> getQuery(String query) {
-        Session session = sessionFactory.openSession();
-        try {
-            session.beginTransaction();
-            Query q = session.createQuery(query);
-            List<?> l = q.list();
-            session.getTransaction().commit();
-            return l;
-        } catch (Exception e) {
-            if (session.getTransaction() != null)
-                session.getTransaction().rollback();
-            logger.info("Error in getQuery: query fail: " + query);
-            e.printStackTrace();
-        } finally {
-            session.close();
+    private Boolean checkIfMannschaftAlreadyExist(String man) {
+        List<Mannschaft> mannschaft = null;
+        mannschaft = (List<Mannschaft>) getQuery(MakeQuery.getMannschaftFromStringQuery(man));
+        if (mannschaft.size() == 1) {
+            return true;
+        } else if (mannschaft.size() == 0) {
+            return false;
+        } else {
+            logger.error("Error in checkIfMannschaftAlreadyExist: Found same Mannschaft more then once");
+            for (Mannschaft m : mannschaft) {
+                logger.info(m.getName());
+            }
+            return true;
         }
-        return null;
+    }
+
+    private Mannschaft getMannschaftFromString(String man) {
+        List<Mannschaft> mannschaft = null;
+        mannschaft = (List<Mannschaft>) getQuery(MakeQuery.getMannschaftFromStringQuery(man));
+        if (mannschaft.size() == 1) {
+            return mannschaft.get(0);
+        } else if (mannschaft.size() == 0) {
+            return null;
+        } else {
+            logger.error("Error in getMannschaftFromString: Found same Mannschaft more then once");
+            for (Mannschaft m : mannschaft) {
+                logger.info(m.getName());
+            }
+            return mannschaft.get(0);
+        }
     }
 
     /**
@@ -411,19 +452,17 @@ public class DbManage {
         return q;
     }
 
-    /**
-     * Gets the date from string.
-     *
-     * @param date the date
-     * @return the date from string
-     */
-
-    /**
-     * Gets the date format from string.
-     *
-     * @param date the date
-     * @return the date format from string
-     */
+    private Mannschaft createMannschaftIfNotExists(String name) {
+        Mannschaft m;
+        if (checkIfMannschaftAlreadyExist(name)) {
+            m = getMannschaftFromString(name);
+        } else {
+            m = new Mannschaft();
+            m.setName(name);
+            saveObject(m, printMannschaft(m));
+        }
+        return m;
+    }
 
     /**
      * Convert crawl infos.
@@ -432,11 +471,10 @@ public class DbManage {
      * @param spieltyp the spieltyp
      * @return the begegnung
      */
-    private Begegnung convertCrawlInfos(CrawlInfos cf, Spieltyp spieltyp) {
-
+    private Begegnung convertCrawlInfos(CrawlInfos cf, Spieltyp spieltyp, Mannschaft m1, Mannschaft m2) {
         Begegnung b = new Begegnung();
-        b.setMannschaft_1(cf.getErsteMannschaft());
-        b.setMannschaft_2(cf.getZweiteMannschaft());
+        b.setMannschaft_1(m1);
+        b.setMannschaft_2(m2);
         b.setDatum(cf.getDate());
         b.setSpieltyp(spieltyp);
         return b;
@@ -536,6 +574,10 @@ public class DbManage {
     private String printErgebnis(Ergebnis e) {
         return "Ergebnis: " + e.getBegegnung().getMannschaft_1() + " vs " + e.getBegegnung().getMannschaft_2() + " " + e.getM1_tore() + ":"
                 + e.getM2_tore() + " (" + e.getM1_h_tore() + ":" + e.getM2_h_tore() + ")";
+    }
+
+    private String printMannschaft(Mannschaft m) {
+        return "Mannschaft: " + m.getName();
     }
 
 }

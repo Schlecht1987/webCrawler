@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import mapping.Begegnung;
+import mapping.Mannschaft;
 import mapping.Quote;
 import mapping.Spieltyp;
 import mapping.Wettanbieter;
@@ -127,8 +128,12 @@ public class GenerateDB {
         for (int i = 0; i < anzahl; i++) {
             Begegnung temp = new Begegnung();
             temp.setDatum(new Date());
-            temp.setMannschaft_1(mList.get(myRandom(0, random)));
-            temp.setMannschaft_2(mList.get(myRandom(0, random)));
+            Mannschaft m1 = new Mannschaft();
+            Mannschaft m2 = new Mannschaft();
+            m1.setName(mList.get(myRandom(0, random)));
+            m2.setName(mList.get(myRandom(0, random)));
+            temp.setMannschaft_1(m1);
+            temp.setMannschaft_2(m2);
             temp.setSpieltyp(sList.get(0));
             bList.add(temp);
             session.save(temp);

@@ -20,6 +20,10 @@ public class XPath {
     public static String getBegegnung(int i, int j) {
         return "//*[@id='markets']/div[1]/div/ul/li/ul/li[" + i + "]/ul/li[" + j + "]/div/div/ul/li/div/table/tbody/tr/";
     }
+    
+    public static String getUhrzeit(int i, int j){
+        return "//*[@id='markets']/div[1]/div/ul/li/ul/li[" + i + "]/ul/li[" + j + "]/div/div/ul/li/div/h6";
+    }
 
     public static String getErsteMannschaft() {
         return getBegegnungsPath(1, 2);

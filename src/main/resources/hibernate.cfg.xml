@@ -13,8 +13,8 @@
 
 		<!-- Assume test is the database name -->
 		<property name="hibernate.connection.url">
-			 <!--jdbc:mysql://192.168.1.26:3306/fussballquoten -->
-			 jdbc:mysql://localhost/fussballquoten
+			<!--  jdbc:mysql://192.168.1.26:3306/fussballquoten -->
+			  jdbc:mysql://localhost/fussballquoten
 		</property>
 		<property name="hibernate.connection.username">
 			webcrawler
@@ -39,7 +39,7 @@
 		<mapping class="mapping.Quote" />
 		<mapping class="mapping.Wettanbieter" />
 		<mapping class="mapping.HistoryQuote" />
-
+		<mapping class="mapping.Mannschaft" /> 
 
 	</session-factory>
 </hibernate-configuration>

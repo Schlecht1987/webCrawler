@@ -17,12 +17,16 @@ public class MakeQuery {
      * @param cf the cf
      * @return the specific begegnungs query
      */
-    public static String getSpecificBegegnungsQuery(String mannschaft_1,String mannschaft_2, Date date){
-        String query = "from Begegnung where datum = '" +getHQLDateFormatFromDate(date) + "' AND mannschaft_1 = '" + mannschaft_1
-                + "' AND mannschaft_2 = '" + mannschaft_2 + "' ";
+    public static String getSpecificBegegnungsQuery(int mannschaft_1,int mannschaft_2, Date date){
+        String query = "from Begegnung where datum = '" +getHQLDateFormatFromDate(date) + "' AND mannschaft_1 = " + mannschaft_1
+                + " AND mannschaft_2 = " + mannschaft_2 + " ";
         return query;
     }
     
+    public static String getMannschaftFromStringQuery(String mannschaft){
+        String query = "from Mannschaft where name ='"+mannschaft+"' ";
+        return query;
+    }
     public static String checkIfBegegnungHasAlreadyAErebnis(int begegnungsID)
     {
         String query = "from Ergebnis where begegnung = "+begegnungsID;
@@ -57,7 +61,7 @@ public class MakeQuery {
     }
     
     private static String getHQLDateFormatFromDate(Date date) {
-        return new SimpleDateFormat("yyyy-MM-dd").format(date);
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
     }
 
 }
