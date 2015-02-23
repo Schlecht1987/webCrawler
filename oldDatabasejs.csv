@@ -1,0 +1,480 @@
+2014-11-22,"Hannover 96","Bayer Leverkusen",Bundesliga,3.7,3.5,1.95,0,1,0,3,2
+2014-11-22,"FSV Mainz 05","SC Freiburg",Bundesliga,2.2,3.3,3.2,1,2,1,2,x
+2014-11-22,"SC Paderborn 07","Borussia Dortmund",Bundesliga,7.5,4.2,1.45,0,2,2,2,x
+2014-11-22,"FC Schalke 04","VfL Wolfsburg",Bundesliga,3,3.3,2.3,3,3,1,2,1
+2014-11-22,"FC Bayern München","1899 Hoffenheim",Bundesliga,1.17,7,14,2,4,0,0,1
+2014-11-22,"Borussia Mönchengladbach","Eintracht Frankfurt",Bundesliga,1.48,4.33,6.25,1,1,0,3,2
+2014-11-22,"1. FC Köln","Hertha BSC",Bundesliga,2.2,3.4,3.6,0,1,1,2,2
+2014-11-23,"Hamburger SV","Werder Bremen",Bundesliga,1.95,3.4,3.75,0,2,0,0,1
+2014-11-23,"VfB Stuttgart","FC Augsburg",Bundesliga,2.45,3.3,2.8,0,0,0,1,2
+2014-11-28,"SC Freiburg","VfB Stuttgart",Bundesliga,2.25,3.3,3.1,1,1,1,4,2
+2014-11-29,"Werder Bremen","SC Paderborn 07",Bundesliga,2.45,3.3,2.75,1,4,0,0,1
+2014-11-29,"Hertha BSC","FC Bayern München",Bundesliga,10,6.75,1.22,0,0,1,1,2
+2014-11-29,"FC Augsburg","Hamburger SV",Bundesliga,1.85,3.4,4.33,0,3,1,1,1
+2014-11-29,"Bayer Leverkusen","1. FC Köln",Bundesliga,1.55,4,5.75,1,5,1,1,1
+2014-11-29,"FC Schalke 04","FSV Mainz 05",Bundesliga,2.05,3.4,3.5,2,4,1,1,1
+2014-11-29,"1899 Hoffenheim","Hannover 96",Bundesliga,1.72,3.9,5.25,2,4,1,3,1
+2014-11-30,"VfL Wolfsburg","Borussia Mönchengladbach",Bundesliga,1.9,3.6,3.75,1,1,0,0,1
+2014-11-30,"Eintracht Frankfurt","Borussia Dortmund",Bundesliga,5,4.1,1.6,1,2,0,0,1
+2014-12-05,"Borussia Dortmund","1899 Hoffenheim",Bundesliga,1.51,4.5,5.75,1,1,0,0,1
+2014-12-06,"Hannover 96","VfL Wolfsburg",Bundesliga,3.6,3.4,2,1,1,1,3,2
+2014-12-06,"VfB Stuttgart","FC Schalke 04",Bundesliga,2.25,3.3,3.1,0,0,3,4,2
+2014-12-06,"Borussia Mönchengladbach","Hertha BSC",Bundesliga,1.7,3.75,4.6,1,3,1,2,1
+2014-12-06,"1. FC Köln","FC Augsburg",Bundesliga,2.8,3.1,2.65,1,1,0,2,2
+2014-12-06,"SC Paderborn 07","SC Freiburg",Bundesliga,2.35,3.3,2.9,0,1,1,1,x
+2014-12-06,"FC Bayern München","Bayer Leverkusen",Bundesliga,1.28,6.5,11,0,1,0,0,1
+2014-12-07,"Hamburger SV","FSV Mainz 05",Bundesliga,2.2,3.3,3.2,1,2,0,1,1
+2014-12-07,"Eintracht Frankfurt","Werder Bremen",Bundesliga,2,3.4,3.6,1,5,1,2,1
+2014-12-13,"FSV Mainz 05","VfB Stuttgart",Bundesliga,2.35,3.4,3.2,1,1,0,1,x
+2014-12-14,"Bayer Leverkusen","Borussia Mönchengladbach",Bundesliga,1.75,3.6,4.5,1,1,1,1,x
+2014-12-14,"VfL Wolfsburg","SC Paderborn 07",Bundesliga,1.42,4.75,6.75,1,1,0,1,x
+2014-12-12,"1899 Hoffenheim","Eintracht Frankfurt",Bundesliga,1.91,3.5,3.8,1,3,0,2,1
+2014-12-13,"SC Freiburg","Hamburger SV",Bundesliga,2.45,3.25,2.8,0,0,0,0,x
+2014-12-13,"Hertha BSC","Borussia Dortmund",Bundesliga,5,3.8,1.65,1,1,0,0,1
+2014-12-13,"Werder Bremen","Hannover 96",Bundesliga,2.6,3.3,2.6,1,3,1,3,x
+2014-12-13,"FC Augsburg","FC Bayern München",Bundesliga,8,5.25,1.33,0,0,0,4,2
+2014-12-13,"FC Schalke 04","1. FC Köln",Bundesliga,1.91,3.5,3.8,0,1,0,2,2
+2014-12-16,"FC Bayern München","SC Freiburg",Bundesliga,1.1,9.75,20,1,2,0,0,1
+2014-12-16,"1. FC Köln","FSV Mainz 05",Bundesliga,2.4,3.2,2.9,0,0,0,0,x
+2014-12-16,"Hamburger SV","VfB Stuttgart",Bundesliga,2.05,3.4,3.5,0,0,1,1,2
+2014-12-16,"Hannover 96","FC Augsburg",Bundesliga,2.45,3.2,2.85,1,2,0,0,1
+2014-12-17,"SC Paderborn 07","FC Schalke 04",Bundesliga,2.9,3.4,2.3,1,1,1,2,2
+2014-12-17,"Eintracht Frankfurt","Hertha BSC",Bundesliga,2.05,3.4,3.5,1,4,3,4,x
+2014-12-17,"1899 Hoffenheim","Bayer Leverkusen",Bundesliga,3,3.4,2.25,0,0,0,1,2
+2014-12-17,"Borussia Mönchengladbach","Werder Bremen",Bundesliga,1.5,4.4,5.75,2,4,0,1,1
+2014-12-17,"Borussia Dortmund","VfL Wolfsburg",Bundesliga,1.9,3.5,3.9,1,2,1,2,x
+2014-12-19,"FSV Mainz 05","FC Bayern München",Bundesliga,11.5,6.25,1.22,1,1,1,2,2
+2014-12-20,"VfB Stuttgart","SC Paderborn 07",Bundesliga,1.9,3.4,4,0,0,0,0,x
+2014-12-20,"Werder Bremen","Borussia Dortmund",Bundesliga,5.5,3.8,1.6,1,2,0,1,1
+2014-12-20,"FC Augsburg","Borussia Mönchengladbach",Bundesliga,2.7,3.25,2.7,1,2,1,1,1
+2014-12-20,"Bayer Leverkusen","Eintracht Frankfurt",Bundesliga,1.42,4.33,7.25,0,1,1,1,x
+2014-12-20,"FC Schalke 04","Hamburger SV",Bundesliga,1.8,3.6,4.2,0,0,0,0,x
+2014-12-20,"VfL Wolfsburg","1. FC Köln",Bundesliga,1.48,4.75,7.25,1,2,1,1,1
+2014-12-21,"Hertha BSC","1899 Hoffenheim",Bundesliga,2.55,3.25,2.7,0,0,3,5,2
+2014-12-21,"SC Freiburg","Hannover 96",Bundesliga,2.5,3.3,2.7,1,2,0,2,x
+2015-01-30,"VfL Wolfsburg","FC Bayern München",Bundesliga,5.75,4.75,1.53,2,4,0,1,1
+2015-01-31,"VfB Stuttgart","Borussia Mönchengladbach",Bundesliga,2.75,3.25,2.5,0,0,0,1,2
+2015-01-31,"SC Freiburg","Eintracht Frankfurt",Bundesliga,2.8,3.2,2.5,0,4,1,1,1
+2015-01-31,"FC Schalke 04","Hannover 96",Bundesliga,2,3.5,3.5,1,1,0,0,1
+2015-01-31,"FSV Mainz 05","SC Paderborn 07",Bundesliga,2.05,3.3,3.6,1,5,0,0,1
+2015-01-31,"Hamburger SV","1. FC Köln",Bundesliga,2.25,3.3,3.1,0,0,0,2,2
+2015-01-31,"Bayer Leverkusen","Borussia Dortmund",Bundesliga,2.55,3.3,3,0,0,0,0,x
+2015-02-01,"Werder Bremen","Hertha BSC",Bundesliga,2.25,3.3,3.1,1,2,0,0,1
+2015-02-01,"FC Augsburg","1899 Hoffenheim",Bundesliga,2.4,3.1,3,2,3,1,1,1
+2015-02-03,"FC Bayern München","FC Schalke 04",Bundesliga,1.16,7.5,13,0,1,0,1,x
+2015-02-03,"Borussia Mönchengladbach","SC Freiburg",Bundesliga,1.53,4.5,5.25,1,1,0,0,1
+2015-02-03,"Hannover 96","FSV Mainz 05",Bundesliga,2.3,3.4,2.9,1,1,0,1,x
+2015-02-03,"Eintracht Frankfurt","VfL Wolfsburg",Bundesliga,4,3.6,1.85,0,1,0,1,x
+2015-02-04,"Borussia Dortmund","FC Augsburg",Bundesliga,1.48,4.6,5.75,0,0,0,1,2
+2015-02-04,"1899 Hoffenheim","Werder Bremen",Bundesliga,1.7,4,4.25,1,1,1,2,2
+2015-02-04,"Hertha BSC","Bayer Leverkusen",Bundesliga,4.5,3.6,1.75,0,0,0,1,2
+2015-02-04,"1. FC Köln","VfB Stuttgart",Bundesliga,2.3,3.2,3.1,0,0,0,0,x
+2015-02-04,"SC Paderborn 07","Hamburger SV",Bundesliga,2.55,3.25,2.7,0,0,1,3,2
+2014-11-21,"Athletic Bilbao",Espanyol,"Primera Division",1.83,3.4,4.4,2,3,0,1,1
+2014-11-22,"Atletico Madrid",Malaga,"Primera Division",1.5,4.1,6.25,2,3,0,1,1
+2014-11-22,"SD Eibar","Real Madrid","Primera Division",12,6,1.22,0,0,2,4,2
+2014-11-22,"FC Barcelona","FC Sevilla","Primera Division",1.25,6,9.75,1,5,0,1,1
+2014-11-22,"Deportivo La Coruna","Real Sociedad","Primera Division",3,3.3,2.3,0,0,0,0,x
+2014-11-23,"Rayo Vallecano","Celta de Vigo","Primera Division",2.6,3.5,2.7,1,1,0,0,1
+2014-11-23,Levante,Valencia,"Primera Division",3.9,3.5,1.9,0,2,0,1,1
+2014-11-23,Elche,Cordoba,"Primera Division",2,3.25,3.75,0,2,1,2,x
+2014-11-23,Villarreal,Getafe,"Primera Division",1.5,4,6.5,2,2,0,1,1
+2014-11-24,"Granada CF","UD Almeria","Primera Division",2.15,3.2,3.4,0,0,0,0,x
+2014-11-29,Getafe,"Athletic Bilbao","Primera Division",2.8,3.1,2.7,0,1,1,2,2
+2014-11-29,Espanyol,Levante,"Primera Division",1.68,3.5,5.5,2,2,1,1,1
+2014-11-29,Malaga,"Real Madrid","Primera Division",7.75,5,1.36,0,1,1,2,2
+2014-11-30,"Atletico Madrid","Deportivo La Coruna","Primera Division",1.2,6,14,1,2,0,0,1
+2014-11-30,"FC Sevilla","Granada CF","Primera Division",1.45,4.5,6.25,1,5,1,1,1
+2014-11-30,Cordoba,Villarreal,"Primera Division",4.33,3.4,1.83,0,0,1,2,2
+2014-11-30,Valencia,"FC Barcelona","Primera Division",5.5,4.1,1.55,0,0,0,1,2
+2014-12-01,"UD Almeria","Rayo Vallecano","Primera Division",2.5,3.3,2.7,0,0,0,1,2
+2014-11-28,"Real Sociedad",Elche,"Primera Division",1.62,3.75,5.25,2,3,0,0,1
+2014-11-29,"Celta de Vigo","SD Eibar","Primera Division",1.65,3.7,5.25,0,0,1,1,2
+2014-12-06,Elche,"Atletico Madrid","Primera Division",6.5,4,1.57,0,0,1,2,2
+2014-12-06,"Athletic Bilbao",Cordoba,"Primera Division",1.42,4.2,7.75,0,0,1,1,2
+2014-12-06,"Real Madrid","Celta de Vigo","Primera Division",1.14,8.5,13.5,1,3,0,0,1
+2014-12-06,"Deportivo La Coruna",Malaga,"Primera Division",3.1,3.25,2.3,0,0,1,1,2
+2014-12-07,"FC Barcelona",Espanyol,"Primera Division",1.1,9,21,1,5,1,1,1
+2014-12-07,Villarreal,"Real Sociedad","Primera Division",1.67,3.8,4.75,0,4,0,0,1
+2014-12-07,"Granada CF",Valencia,"Primera Division",4,3.4,1.91,0,1,0,1,x
+2014-12-08,"SD Eibar","UD Almeria","Primera Division",2.1,3.2,3.5,3,5,1,2,1
+2014-12-08,Levante,Getafe,"Primera Division",2.6,3.1,2.75,0,1,0,1,x
+2014-12-12,"UD Almeria","Real Madrid","Primera Division",13.5,7.5,1.17,1,1,2,4,2
+2014-12-13,Getafe,"FC Barcelona","Primera Division",11,6.25,1.22,0,0,0,0,x
+2014-12-13,Valencia,"Rayo Vallecano","Primera Division",1.5,4.25,6,3,3,0,0,1
+2014-12-13,Cordoba,Levante,"Primera Division",2.3,3,3.3,0,0,0,0,x
+2014-12-13,Malaga,"Celta de Vigo","Primera Division",2.2,3.4,3.1,1,1,0,0,1
+2014-12-14,Espanyol,"Granada CF","Primera Division",1.75,3.3,5,1,2,0,1,1
+2014-12-14,"FC Sevilla","SD Eibar","Primera Division",1.4,4.4,7.75,0,0,0,0,x
+2014-12-14,"Atletico Madrid",Villarreal,"Primera Division",1.6,3.75,5.5,0,0,0,1,2
+2014-12-14,"Real Sociedad","Athletic Bilbao","Primera Division",2.5,3.2,2.8,1,1,0,1,x
+2014-12-15,"Deportivo La Coruna",Elche,"Primera Division",2.2,3.2,3.5,1,1,0,0,1
+2014-12-07,"Rayo Vallecano","FC Sevilla","Primera Division",3.3,3.5,2.2,0,0,1,1,2
+2014-12-19,"Celta de Vigo","UD Almeria","Primera Division",1.5,4.2,6,0,0,1,1,2
+2014-12-20,"FC Barcelona",Cordoba,"Primera Division",1.06,13,23,1,5,0,0,1
+2014-12-20,Levante,"Real Sociedad","Primera Division",2.8,3.25,2.7,0,1,0,1,x
+2014-12-20,"SD Eibar",Valencia,"Primera Division",3.4,3.3,2.1,0,0,1,1,2
+2014-12-20,"Rayo Vallecano",Espanyol,"Primera Division",2.2,3.4,3.4,1,1,1,3,2
+2014-12-21,Villarreal,"Deportivo La Coruna","Primera Division",1.36,4.6,8.5,1,3,0,0,1
+2014-12-21,"Granada CF",Getafe,"Primera Division",2.35,3.2,3.3,1,1,0,1,x
+2014-12-21,Elche,Malaga,"Primera Division",3,3.3,2.5,1,1,0,2,2
+2014-12-21,"Athletic Bilbao","Atletico Madrid","Primera Division",3.8,3.2,2.15,1,1,0,4,2
+2015-01-09,Levante,"Deportivo La Coruna","Primera Division",2.25,3.2,3.2,0,0,0,0,x
+2015-01-10,"Real Madrid",Espanyol,"Primera Division",1.08,10,23,2,3,0,0,1
+2015-01-10,Malaga,Villarreal,"Primera Division",2.5,3.2,2.8,0,1,1,1,x
+2015-01-10,"Celta de Vigo",Valencia,"Primera Division",2.7,3.2,2.6,0,1,1,1,x
+2015-01-10,"SD Eibar",Getafe,"Primera Division",2.35,3.25,3,1,2,0,1,1
+2015-01-11,"UD Almeria","FC Sevilla","Primera Division",3.7,3.3,2,0,0,0,2,2
+2015-01-11,"Athletic Bilbao",Elche,"Primera Division",1.5,4,6.5,0,1,1,2,2
+2015-01-11,"Granada CF","Real Sociedad","Primera Division",2.75,3.2,2.55,0,1,1,1,x
+2015-01-11,"FC Barcelona","Atletico Madrid","Primera Division",1.5,4,6.5,2,3,0,1,1
+2015-01-12,"Rayo Vallecano",Cordoba,"Primera Division",1.9,3.4,4,0,0,1,1,2
+2015-01-16,Cordoba,"SD Eibar","Primera Division",2.6,3.1,2.75,1,1,0,1,x
+2015-01-17,"Real Sociedad","Rayo Vallecano","Primera Division",1.85,3.8,3.8,0,0,0,1,2
+2015-01-17,Valencia,"UD Almeria","Primera Division",1.3,5.25,9,2,3,2,2,1
+2015-01-17,Villarreal,"Athletic Bilbao","Primera Division",1.67,3.8,4.75,1,2,0,0,1
+2015-01-17,Espanyol,"Celta de Vigo","Primera Division",2.65,3.1,2.7,0,1,0,0,1
+2015-01-18,Getafe,"Real Madrid","Primera Division",10,6,1.25,0,0,0,3,2
+2015-01-18,"Atletico Madrid","Granada CF","Primera Division",1.19,6.25,14,1,2,0,0,1
+2015-01-18,"Deportivo La Coruna","FC Barcelona","Primera Division",14,6.75,1.18,0,0,2,4,2
+2015-01-18,"FC Sevilla",Malaga,"Primera Division",1.67,3.6,5.25,1,2,0,0,1
+2015-01-18,Elche,Levante,"Primera Division",2.2,3.2,3.3,1,1,0,0,1
+2015-01-24,Cordoba,"Real Madrid","Primera Division",17,7.25,1.14,1,1,1,2,2
+2015-01-24,Elche,"FC Barcelona","Primera Division",15.5,6.5,1.18,0,0,1,6,2
+2015-01-24,"Atletico Madrid","Rayo Vallecano","Primera Division",1.28,5.5,9.75,2,3,1,1,1
+2015-01-24,"Real Sociedad","SD Eibar","Primera Division",1.8,3.4,4.6,0,1,0,0,1
+2015-01-24,Villarreal,Levante,"Primera Division",1.28,5,11,0,1,0,0,1
+2015-01-25,"Deportivo La Coruna","Granada CF","Primera Division",2.25,3.2,3.5,2,2,1,2,x
+2015-01-25,"Athletic Bilbao",Malaga,"Primera Division",2.1,3.25,3.9,0,1,0,1,x
+2015-01-25,Espanyol,"UD Almeria","Primera Division",1.67,3.4,5.75,2,3,0,0,1
+2015-01-25,Valencia,"FC Sevilla","Primera Division",2.2,3.2,3.25,2,3,1,1,1
+2015-01-26,Getafe,"Celta de Vigo","Primera Division",2.9,3.3,2.37,1,2,1,1,1
+2015-01-30,"Rayo Vallecano","Deportivo La Coruna","Primera Division",1.8,3.4,4.5,1,1,1,2,2
+2015-01-31,"Real Madrid","Real Sociedad","Primera Division",1.18,7.75,15,2,4,1,1,1
+2015-01-31,"SD Eibar","Atletico Madrid","Primera Division",6.5,3.75,1.62,0,1,3,3,2
+2015-01-31,"Granada CF",Elche,"Primera Division",2.05,3.2,3.75,0,1,0,0,1
+2015-01-31,"Celta de Vigo",Cordoba,"Primera Division",1.55,4,6.75,0,1,0,0,1
+2015-02-01,Levante,"Athletic Bilbao","Primera Division",3.3,3.1,2.4,0,0,0,2,2
+2015-02-01,"UD Almeria",Getafe,"Primera Division",2.4,3.1,3,1,1,0,0,1
+2015-02-01,"FC Sevilla",Espanyol,"Primera Division",1.67,3.9,4.6,2,3,1,2,1
+2015-02-01,"FC Barcelona",Villarreal,"Primera Division",1.22,6.5,10.5,1,3,1,2,1
+2015-02-02,Malaga,Valencia,"Primera Division",2.65,3.3,2.75,1,1,0,0,1
+2015-02-04,"Real Madrid","FC Sevilla","Primera Division",1.29,5.5,8.5,2,2,0,1,1
+2014-11-22,"Newcastle United","Queens Park Rangers","Premier League",1.85,3.4,4.2,0,1,0,0,1
+2014-11-22,"Manchester City","Swansea City","Premier League",1.4,4.6,7.5,1,2,1,1,1
+2014-11-22,"Stoke City",Burnley,"Premier League",1.65,3.7,5.25,1,1,2,2,2
+2014-11-22,"Everton FC","West Ham United","Premier League",1.65,3.75,5,1,2,0,1,1
+2014-11-22,"FC Chelsea","West Bromwich Albion","Premier League",1.25,5.5,11.5,2,2,0,0,1
+2014-11-22,"Leicester City",Sunderland,"Premier League",2,3.5,3.5,0,0,0,0,x
+2014-11-22,"FC Arsenal","Manchester Utd","Premier League",2.1,3.6,3.5,0,1,0,2,2
+2014-11-23,"Crystal Palace","FC Liverpool","Premier League",3.7,3.5,2.05,1,3,1,1,1
+2014-11-23,"Hull City","Tottenham Hotspur","Premier League",3.3,3.4,2.25,1,1,0,2,2
+2014-11-24,"Aston Villa","Southampton FC","Premier League",5,3.8,1.72,1,1,0,1,x
+2014-11-29,"West Bromwich Albion","FC Arsenal","Premier League",3.9,3.6,1.87,0,0,0,1,2
+2014-11-29,"FC Liverpool","Stoke City","Premier League",1.72,3.8,4.4,0,1,0,0,1
+2014-11-29,"Manchester Utd","Hull City","Premier League",1.36,4.75,7.75,2,3,0,0,1
+2014-11-29,"Queens Park Rangers","Leicester City","Premier League",2.45,3.2,2.85,2,3,1,2,1
+2014-11-29,"Swansea City","Crystal Palace","Premier League",1.8,3.6,4.2,1,1,1,1,x
+2014-11-29,"West Ham United","Newcastle United","Premier League",2.2,3.2,3.3,0,1,0,0,1
+2014-11-29,Burnley,"Aston Villa","Premier League",2.2,3.2,3.25,0,1,1,1,x
+2014-11-29,Sunderland,"FC Chelsea","Premier League",8,5,1.4,0,0,0,0,x
+2014-11-30,"Southampton FC","Manchester City","Premier League",3,3.4,2.4,0,0,0,3,2
+2014-11-30,"Tottenham Hotspur","Everton FC","Premier League",2.2,3.4,3.4,2,2,1,1,1
+2014-12-02,"Manchester Utd","Stoke City","Premier League",1.44,4.25,7.25,1,2,1,1,1
+2014-12-02,"Swansea City","Queens Park Rangers","Premier League",1.75,3.5,4.75,0,2,0,0,1
+2014-12-02,Burnley,"Newcastle United","Premier League",2.8,3.2,2.7,1,1,0,1,x
+2014-12-02,"Leicester City","FC Liverpool","Premier League",3.75,3.5,2.05,1,1,1,3,2
+2014-12-02,"Crystal Palace","Aston Villa","Premier League",2.05,3.2,3.7,0,0,1,1,2
+2014-12-02,"West Bromwich Albion","West Ham United","Premier League",2.5,3.25,3,1,1,2,2,2
+2014-12-03,"Everton FC","Hull City","Premier League",1.5,3.9,6.75,1,1,0,1,x
+2014-12-03,Sunderland,"Manchester City","Premier League",7,4.1,1.53,1,1,2,4,2
+2014-12-03,"FC Arsenal","Southampton FC","Premier League",1.8,3.7,4.75,0,1,0,0,1
+2014-12-03,"FC Chelsea","Tottenham Hotspur","Premier League",1.4,4.75,8.5,2,3,0,0,1
+2014-12-06,"Newcastle United","FC Chelsea","Premier League",6,3.9,1.62,0,2,0,1,1
+2014-12-06,"Queens Park Rangers",Burnley,"Premier League",2.1,3.25,3.5,0,2,0,0,1
+2014-12-06,"Stoke City","FC Arsenal","Premier League",3.5,3.25,2.1,3,3,0,2,1
+2014-12-06,"Hull City","West Bromwich Albion","Premier League",2.5,3.1,2.9,0,0,0,0,x
+2014-12-06,"FC Liverpool",Sunderland,"Premier League",1.5,4.2,7.25,0,0,0,0,x
+2014-12-06,"Tottenham Hotspur","Crystal Palace","Premier League",1.67,3.75,5,0,0,0,0,x
+2014-12-06,"Manchester City","Everton FC","Premier League",1.5,4.6,6.25,1,1,0,0,1
+2014-12-07,"West Ham United","Swansea City","Premier League",2.3,3.4,3.2,1,3,1,1,1
+2014-12-07,"Aston Villa","Leicester City","Premier League",2.55,3.2,3,1,2,1,1,1
+2014-12-08,"Southampton FC","Manchester Utd","Premier League",2.85,3.25,2.6,1,1,1,2,2
+2014-12-13,Sunderland,"West Ham United","Premier League",2.75,3.25,2.7,1,1,1,1,x
+2014-12-13,"West Bromwich Albion","Aston Villa","Premier League",2.2,3.2,3.25,0,1,0,0,1
+2014-12-13,"FC Chelsea","Hull City","Premier League",1.2,6,15,1,2,0,0,1
+2014-12-13,Burnley,"Southampton FC","Premier League",5,3.75,1.75,0,1,0,0,1
+2014-12-13,"Leicester City","Manchester City","Premier League",7,4.75,1.45,0,0,1,1,2
+2014-12-13,"Crystal Palace","Stoke City","Premier League",2.5,3.2,3.1,1,1,1,1,x
+2014-12-13,"FC Arsenal","Newcastle United","Premier League",1.45,4.75,7,1,4,0,1,1
+2014-12-14,"Manchester Utd","FC Liverpool","Premier League",1.85,3.6,4.5,2,3,0,0,1
+2014-12-14,"Swansea City","Tottenham Hotspur","Premier League",2.4,3.4,3,0,1,1,2,2
+2014-12-15,"Everton FC","Queens Park Rangers","Premier League",1.45,4.75,7,2,3,0,1,1
+2014-12-20,"Manchester City","Crystal Palace","Premier League",1.3,5.5,11,0,3,0,0,1
+2014-12-20,"Hull City","Swansea City","Premier League",3.1,3.25,2.45,0,0,1,1,2
+2014-12-20,"Southampton FC","Everton FC","Premier League",2.5,3.4,2.9,1,3,0,0,1
+2014-12-20,"Aston Villa","Manchester Utd","Premier League",5.5,3.9,1.67,1,1,0,1,x
+2014-12-20,"Queens Park Rangers","West Bromwich Albion","Premier League",2.5,3.3,3,1,3,2,2,1
+2014-12-20,"West Ham United","Leicester City","Premier League",1.7,3.9,5.25,1,2,0,0,1
+2014-12-20,"Tottenham Hotspur",Burnley,"Premier League",1.45,4.25,6.75,2,2,1,1,1
+2014-12-21,"Newcastle United",Sunderland,"Premier League",2.1,3.4,3.75,0,0,0,1,2
+2014-12-21,"FC Liverpool","FC Arsenal","Premier League",2.75,3.4,2.65,1,2,1,2,x
+2014-12-22,"Stoke City","FC Chelsea","Premier League",6,3.85,1.62,0,0,1,2,2
+2014-12-26,"FC Chelsea","West Ham United","Premier League",1.34,5,8,1,2,0,0,1
+2014-12-26,"Everton FC","Stoke City","Premier League",1.85,3.4,4.25,0,0,1,1,2
+2014-12-26,"Leicester City","Tottenham Hotspur","Premier League",3.1,3.3,2.25,0,1,1,2,2
+2014-12-26,"Manchester Utd","Newcastle United","Premier League",1.4,4.5,7.75,2,3,0,1,1
+2014-12-26,Burnley,"FC Liverpool","Premier League",4.75,3.6,1.72,0,0,0,1,2
+2014-12-26,"Crystal Palace","Southampton FC","Premier League",3.4,3.25,2.15,0,1,1,3,2
+2014-12-26,"Swansea City","Aston Villa","Premier League",1.7,3.5,5,1,1,0,0,1
+2014-12-26,"West Bromwich Albion","Manchester City","Premier League",4.75,4.1,1.62,0,1,3,3,2
+2014-12-26,Sunderland,"Hull City","Premier League",2.05,3.2,3.75,1,1,1,3,2
+2014-12-26,"FC Arsenal","Queens Park Rangers","Premier League",1.29,5.5,9.25,1,2,0,1,1
+2014-12-28,"Tottenham Hotspur","Manchester Utd","Premier League",2.9,3.4,2.5,0,0,0,0,x
+2014-12-28,"Southampton FC","FC Chelsea","Premier League",4,3.4,2,1,1,1,1,x
+2014-12-28,"Hull City","Leicester City","Premier League",2.62,3.2,2.9,0,0,1,1,2
+2014-12-28,"Aston Villa",Sunderland,"Premier League",2.3,3.1,3.2,0,0,0,0,x
+2014-12-28,"Stoke City","West Bromwich Albion","Premier League",2.15,3.25,3.7,0,2,0,0,1
+2014-12-28,"West Ham United","FC Arsenal","Premier League",3.6,3.5,2.1,0,1,2,2,2
+2014-12-28,"Manchester City",Burnley,"Premier League",1.18,6.5,14.5,2,2,0,2,x
+2014-12-28,"Queens Park Rangers","Crystal Palace","Premier League",2.55,3.2,3,0,0,0,0,x
+2014-12-28,"Newcastle United","Everton FC","Premier League",2.62,3.3,2.8,1,3,1,2,1
+2014-12-29,"FC Liverpool","Swansea City","Premier League",1.72,3.8,5,1,4,0,1,1
+2015-01-10,Sunderland,"FC Liverpool","Premier League",4.2,3.6,1.8,0,0,1,1,2
+2015-01-10,"Everton FC","Manchester City","Premier League",4.5,3.4,1.8,0,1,0,1,x
+2015-01-10,Burnley,"Queens Park Rangers","Premier League",2.35,3.25,2.95,2,2,1,1,1
+2015-01-10,"FC Chelsea","Newcastle United","Premier League",1.25,5.25,12.5,1,2,0,0,1
+2015-01-10,"Leicester City","Aston Villa","Premier League",2.4,3.2,2.95,1,1,0,0,1
+2015-01-10,"Swansea City","West Ham United","Premier League",2.15,3.4,3.2,0,1,1,1,x
+2015-01-10,"West Bromwich Albion","Hull City","Premier League",1.95,3.4,3.8,0,1,0,0,1
+2015-01-10,"Crystal Palace","Tottenham Hotspur","Premier League",3.5,3.4,2.05,0,2,0,1,1
+2015-01-11,"FC Arsenal","Stoke City","Premier League",1.42,4.4,7,2,3,0,0,1
+2015-01-11,"Manchester Utd","Southampton FC","Premier League",1.67,4,4.6,0,0,0,1,2
+2015-01-17,"Tottenham Hotspur",Sunderland,"Premier League",1.57,4,5.5,1,2,1,1,1
+2015-01-17,"Swansea City","FC Chelsea","Premier League",6.25,3.9,1.53,0,0,4,5,2
+2015-01-17,Burnley,"Crystal Palace","Premier League",2.4,3.3,2.85,2,2,1,3,2
+2015-01-17,"Aston Villa","FC Liverpool","Premier League",4.25,3.4,1.85,0,0,1,2,2
+2015-01-17,"Queens Park Rangers","Manchester Utd","Premier League",5,4.1,1.6,0,0,0,2,2
+2015-01-17,"Leicester City","Stoke City","Premier League",2.6,3.25,2.65,0,0,0,1,2
+2015-01-17,"Newcastle United","Southampton FC","Premier League",3.3,3.3,2.15,1,1,1,2,2
+2015-01-18,"West Ham United","Hull City","Premier League",1.72,3.6,4.75,0,3,0,0,1
+2015-01-18,"Manchester City","FC Arsenal","Premier League",1.8,3.7,4.1,0,0,1,2,2
+2015-01-19,"Everton FC","West Bromwich Albion","Premier League",1.8,3.5,4.33,0,0,0,0,x
+2015-01-31,"Hull City","Newcastle United","Premier League",2.62,3.1,3,0,0,1,3,2
+2015-01-31,"West Bromwich Albion","Tottenham Hotspur","Premier League",2.75,3.2,2.75,0,0,2,3,2
+2015-01-31,"Crystal Palace","Everton FC","Premier League",2.62,3.3,2.8,0,0,1,1,2
+2015-01-31,"FC Liverpool","West Ham United","Premier League",1.65,4,5.5,0,2,0,0,1
+2015-01-31,"Manchester Utd","Leicester City","Premier League",1.36,5,7.5,3,3,0,1,1
+2015-01-31,"Stoke City","Queens Park Rangers","Premier League",1.75,3.5,4.6,2,3,1,1,1
+2015-01-31,Sunderland,Burnley,"Premier League",2.3,3.2,3.1,2,2,0,0,1
+2015-01-31,"FC Chelsea","Manchester City","Premier League",2.2,3.4,3.4,1,1,1,1,x
+2015-02-01,"FC Arsenal","Aston Villa","Premier League",1.29,6,10,1,5,0,0,1
+2015-02-01,"Southampton FC","Swansea City","Premier League",1.67,3.9,5.5,0,0,0,1,2
+2014-11-21,"FC Metz","Paris Saint-Germain","Ligue 1",5.75,4.1,1.53,0,2,2,3,2
+2014-11-22,"SC Bastia","Olympique Lyon","Ligue 1",3.6,3.3,2.05,0,0,0,0,x
+2014-11-22,"FC Lorient","RC Lens","Ligue 1",1.9,3.2,4.4,1,1,0,0,1
+2014-11-22,"OGC Nizza","Stade Reims","Ligue 1",2.1,3.25,3.5,0,0,0,0,x
+2014-11-22,"AS Monaco","SM Caen","Ligue 1",1.67,3.7,5,1,2,0,2,x
+2014-11-22,"EA Guingamp","Stade Rennes","Ligue 1",2.7,3,2.8,0,0,1,1,2
+2014-11-23,"FC Nantes","AS Saint-Etienne","Ligue 1",2.8,2.9,2.8,0,0,0,0,x
+2014-11-23,"Montpellier HSC","Toulouse FC","Ligue 1",2.75,3.1,2.75,1,2,0,0,1
+2014-11-23,"Olympique Marseille","Girondins Bordeaux","Ligue 1",1.72,3.4,5.25,0,3,0,1,1
+2014-11-28,"Olympique Marseille","FC Nantes","Ligue 1",1.57,3.75,6,2,2,0,0,1
+2014-11-29,"Paris Saint-Germain","OGC Nizza","Ligue 1",1.22,5.5,14.5,1,1,0,0,1
+2014-11-29,"Stade Rennes","AS Monaco","Ligue 1",2.8,2.95,2.7,2,2,0,0,1
+2014-11-29,"Toulouse FC","FC Lorient","Ligue 1",1.78,3.1,5.25,1,2,0,3,2
+2014-11-29,"RC Lens","FC Metz","Ligue 1",2.75,2.9,2.8,0,2,0,0,1
+2014-11-29,"SM Caen","Montpellier HSC","Ligue 1",2.3,3.1,3.2,1,1,1,1,x
+2014-11-29,"Stade Reims","SC Bastia","Ligue 1",2.15,3.2,3.4,1,2,1,1,1
+2014-11-30,"Girondins Bordeaux","OSC Lille","Ligue 1",2.3,3,3.3,0,1,0,0,1
+2014-11-30,"Evian Thonon Gaillard FC","EA Guingamp","Ligue 1",2.3,3,3.3,0,2,0,0,1
+2014-11-30,"AS Saint-Etienne","Olympique Lyon","Ligue 1",2.25,3,3.4,2,3,0,0,1
+2014-12-02,"FC Nantes","Toulouse FC","Ligue 1",2.35,3.1,3.1,0,1,1,2,2
+2014-12-02,"FC Lorient","Olympique Marseille","Ligue 1",4,3.4,1.9,1,1,1,1,x
+2014-12-02,"AS Monaco","RC Lens","Ligue 1",1.42,4.2,8,0,2,0,0,1
+2014-12-03,"EA Guingamp","SM Caen","Ligue 1",2.6,2.95,2.9,2,5,1,1,1
+2014-12-03,"SC Bastia","Evian Thonon Gaillard FC","Ligue 1",2.4,3.1,3,1,1,0,2,2
+2014-12-03,"Montpellier HSC","AS Saint-Etienne","Ligue 1",2.9,3.1,2.5,0,0,2,2,2
+2014-12-03,"OGC Nizza","Stade Rennes","Ligue 1",2.8,2.9,2.8,0,1,1,2,2
+2014-12-03,"FC Metz","Girondins Bordeaux","Ligue 1",2.75,2.9,2.75,0,0,0,0,x
+2014-12-03,"OSC Lille","Paris Saint-Germain","Ligue 1",5,3.7,1.67,1,1,1,1,x
+2014-12-04,"Olympique Lyon","Stade Reims","Ligue 1",1.5,4.1,6.25,1,2,1,1,1
+2014-12-05,"Toulouse FC","AS Monaco","Ligue 1",2.8,2.8,2.8,0,0,1,2,2
+2014-12-06,"Paris Saint-Germain","FC Nantes","Ligue 1",1.33,5,8.75,1,2,1,1,1
+2014-12-06,"AS Saint-Etienne","SC Bastia","Ligue 1",1.5,3.8,7,0,1,0,0,1
+2014-12-06,"Stade Rennes","Montpellier HSC","Ligue 1",1.95,3.4,3.8,0,0,1,4,2
+2014-12-06,"SM Caen","OGC Nizza","Ligue 1",2.05,3.25,3.6,2,2,1,3,2
+2014-12-06,"Girondins Bordeaux","FC Lorient","Ligue 1",1.91,3.3,4.1,1,3,1,2,1
+2014-12-07,"Evian Thonon Gaillard FC","Olympique Lyon","Ligue 1",3.3,3.1,2.25,1,2,0,3,2
+2014-12-07,"RC Lens","OSC Lille","Ligue 1",3.7,3.2,2.05,0,1,0,1,x
+2014-12-07,"Stade Reims","EA Guingamp","Ligue 1",2.4,3,3.1,1,2,1,3,2
+2014-12-07,"Olympique Marseille","FC Metz","Ligue 1",1.36,4.6,8.5,1,3,0,1,1
+2014-12-12,"Olympique Lyon","SM Caen","Ligue 1",1.5,4,6.5,1,3,0,0,1
+2014-12-13,"FC Nantes","Girondins Bordeaux","Ligue 1",2.45,3,3,1,2,1,1,1
+2014-12-13,"SC Bastia","Stade Rennes","Ligue 1",2.95,3.1,2.62,1,2,0,0,1
+2014-12-13,"Stade Reims","Evian Thonon Gaillard FC","Ligue 1",2.2,3.1,3.4,1,3,0,2,1
+2014-12-13,"Montpellier HSC","RC Lens","Ligue 1",1.75,3.5,4.75,2,3,2,3,x
+2014-12-13,"FC Lorient","FC Metz","Ligue 1",1.95,3.25,4,3,3,0,1,1
+2014-12-14,"OGC Nizza","AS Saint-Etienne","Ligue 1",3,3,2.5,0,0,0,0,x
+2014-12-14,"OSC Lille","Toulouse FC","Ligue 1",2.1,3.1,3.75,1,3,0,0,1
+2014-12-14,"EA Guingamp","Paris Saint-Germain","Ligue 1",7.5,4,1.45,1,1,0,0,1
+2014-12-14,"AS Monaco","Olympique Marseille","Ligue 1",2.4,3.2,3.25,0,1,0,0,1
+2014-12-20,"FC Lorient","FC Nantes","Ligue 1",2.4,3.1,3,0,1,1,2,2
+2014-12-19,"RC Lens","OGC Nizza","Ligue 1",2.45,3.2,3.1,1,2,0,0,1
+2014-12-20,"SM Caen","SC Bastia","Ligue 1",2.05,3.1,3.8,0,1,1,1,x
+2014-12-20,"Toulouse FC","EA Guingamp","Ligue 1",2.05,3.1,3.8,1,1,1,1,x
+2014-12-20,"Stade Rennes","Stade Reims","Ligue 1",1.91,3.1,4.5,1,1,0,3,2
+2014-12-20,"FC Metz","AS Monaco","Ligue 1",3.5,3.2,2.1,0,0,0,1,2
+2014-12-21,"Olympique Marseille","OSC Lille","Ligue 1",1.67,3.7,5,1,2,0,1,1
+2014-12-21,"Girondins Bordeaux","Olympique Lyon","Ligue 1",2.62,3.1,2.95,0,0,1,5,2
+2015-01-07,"OSC Lille","Evian Thonon Gaillard FC","Ligue 1",1.75,3.4,5,0,1,0,0,1
+2015-01-09,"Montpellier HSC","Olympique Marseille","Ligue 1",3.2,3.2,2.25,1,2,0,1,1
+2015-01-10,"SC Bastia","Paris Saint-Germain","Ligue 1",9.5,5,1.3,2,4,2,2,1
+2015-01-10,"Stade Reims","AS Saint-Etienne","Ligue 1",3.4,3.25,2.15,0,1,1,2,2
+2015-01-10,"OSC Lille","SM Caen","Ligue 1",1.85,3.6,4,1,1,0,0,1
+2015-01-10,"OGC Nizza","FC Lorient","Ligue 1",2.45,3.25,2.85,1,3,1,1,1
+2015-01-10,"Evian Thonon Gaillard FC","Stade Rennes","Ligue 1",2.7,3.1,2.65,0,1,0,1,x
+2015-01-10,"EA Guingamp","RC Lens","Ligue 1",2.05,3.3,3.6,1,2,0,0,1
+2015-01-11,"Olympique Lyon","Toulouse FC","Ligue 1",1.7,3.4,5.25,2,3,0,0,1
+2015-01-11,"FC Nantes","FC Metz","Ligue 1",1.83,3.5,4.2,0,0,0,0,x
+2015-01-11,"AS Monaco","Girondins Bordeaux","Ligue 1",1.85,3.1,4.75,0,0,0,0,x
+2015-01-17,"AS Monaco","FC Nantes","Ligue 1",1.65,3.7,5.25,0,1,0,0,1
+2015-01-17,"RC Lens","Olympique Lyon","Ligue 1",4.25,3.4,1.85,0,0,2,2,2
+2015-01-17,"Toulouse FC","SC Bastia","Ligue 1",1.9,3.4,4,0,1,0,1,x
+2015-01-17,"FC Metz","Montpellier HSC","Ligue 1",2.45,3.15,2.9,2,2,1,3,2
+2015-01-17,"FC Lorient","OSC Lille","Ligue 1",2.75,3,2.65,0,1,0,0,1
+2015-01-17,"SM Caen","Stade Reims","Ligue 1",2.15,3.2,3.4,3,4,1,1,1
+2015-01-16,"Girondins Bordeaux","OGC Nizza","Ligue 1",1.9,3.2,4.33,1,1,0,2,2
+2015-01-18,"Stade Rennes","AS Saint-Etienne","Ligue 1",2.8,2.95,2.7,0,0,0,0,x
+2015-01-18,"Olympique Marseille","EA Guingamp","Ligue 1",1.4,4.4,8,0,2,0,1,1
+2015-01-23,"OGC Nizza","Olympique Marseille","Ligue 1",3.25,3.25,2.2,0,2,0,1,1
+2015-01-24,"OSC Lille","AS Monaco","Ligue 1",2.75,3,2.75,0,0,0,1,2
+2015-01-24,"SC Bastia","Girondins Bordeaux","Ligue 1",2.5,3.1,2.85,0,0,0,0,x
+2015-01-24,"Montpellier HSC","FC Nantes","Ligue 1",2.2,3.2,3.3,1,4,0,0,1
+2015-01-24,"EA Guingamp","FC Lorient","Ligue 1",2.15,3.2,3.4,1,3,0,2,1
+2015-01-25,"Olympique Lyon","FC Metz","Ligue 1",1.4,4.75,7,1,2,0,0,1
+2015-01-25,"Stade Reims","RC Lens","Ligue 1",2.3,3.3,3,0,0,0,0,x
+2015-01-25,"Stade Rennes","SM Caen","Ligue 1",1.95,3.3,3.9,1,1,1,4,2
+2015-01-31,"Olympique Marseille","Evian Thonon Gaillard FC","Ligue 1",1.36,4.75,7.75,0,1,0,0,1
+2015-01-31,"FC Lorient","Montpellier HSC","Ligue 1",2.6,3.1,2.75,0,0,0,0,x
+2015-01-31,"FC Metz","OGC Nizza","Ligue 1",2.62,3.1,2.75,0,0,0,0,x
+2015-01-31,"FC Nantes","OSC Lille","Ligue 1",2.3,3,3.3,0,1,1,1,x
+2015-01-31,"Toulouse FC","Stade Reims","Ligue 1",1.91,3.4,3.9,1,1,0,0,1
+2015-01-31,"RC Lens","SC Bastia","Ligue 1",2.2,3.1,3.4,0,1,0,1,x
+2015-01-25,"Evian Thonon Gaillard FC","Toulouse FC","Ligue 1",2.55,3,2.9,1,1,0,0,1
+2015-02-01,"SM Caen","AS Saint-Etienne","Ligue 1",3,3.1,2.4,1,1,0,0,1
+2015-02-01,"Girondins Bordeaux","EA Guingamp","Ligue 1",2.05,3.25,3.6,0,1,1,1,x
+2015-02-01,"AS Monaco","Olympique Lyon","Ligue 1",1.95,3.25,4,0,0,0,0,x
+2014-11-22,Atalanta,"AS Roma","Serie A",4.25,3.4,1.85,1,1,2,2,2
+2014-11-22,"Lazio Rom",Juventus,"Serie A",3.7,3.2,2.05,0,0,1,3,2
+2014-11-23,Torino,Sassuolo,"Serie A",1.83,3.4,4.33,0,0,0,1,2
+2014-11-23,Udinese,Chievo,"Serie A",1.95,3.2,4.1,1,1,0,1,x
+2014-11-23,"FC Parma","FC Empoli","Serie A",2.2,3.1,3.4,0,0,1,2,2
+2014-11-23,"Hellas Verona",Fiorentina,"Serie A",3.4,3.2,2.15,1,1,1,2,2
+2014-11-23,Cesena,Sampdoria,"Serie A",3.75,3.3,2,0,1,0,1,x
+2014-11-23,"SSC Napoli",Cagliari,"Serie A",1.36,4.75,7.75,2,3,1,3,x
+2014-11-23,"AC Milan","Inter Mailand","Serie A",2.75,3.1,2.75,1,1,0,1,x
+2014-11-24,"CFC Genua",Palermo,"Serie A",2.15,3.2,3.4,1,1,1,1,x
+2014-11-29,Sassuolo,"Hellas Verona","Serie A",2.1,3.2,3.6,0,2,1,1,1
+2014-11-29,Chievo,"Lazio Rom","Serie A",3.45,3.2,2.15,0,0,0,0,x
+2014-11-30,Cesena,"CFC Genua","Serie A",3.25,3.2,2.2,0,0,3,3,2
+2014-11-30,"FC Empoli",Atalanta,"Serie A",2.15,3.1,3.6,0,0,0,0,x
+2014-11-30,Palermo,"FC Parma","Serie A",2,3.3,3.7,1,2,1,1,1
+2014-11-30,"AC Milan",Udinese,"Serie A",1.62,3.7,5.5,0,2,0,0,1
+2014-11-30,Cagliari,Fiorentina,"Serie A",3.25,3.25,2.2,0,0,1,4,2
+2014-11-30,Juventus,Torino,"Serie A",1.3,5.25,9.25,1,2,1,1,1
+2014-11-30,"AS Roma","Inter Mailand","Serie A",1.8,3.5,4.75,1,4,1,2,1
+2014-12-01,Sampdoria,"SSC Napoli","Serie A",3.5,3.3,2.15,0,1,0,1,x
+2014-12-05,Fiorentina,Juventus,"Serie A",3.7,3.3,2.1,0,0,0,0,x
+2014-12-06,"AS Roma",Sassuolo,"Serie A",1.36,4.4,9,0,2,2,2,x
+2014-12-06,Torino,Palermo,"Serie A",1.91,3.2,4.25,1,2,2,2,x
+2014-12-07,"SSC Napoli","FC Empoli","Serie A",1.4,4.33,7.75,0,2,1,2,x
+2014-12-07,"FC Parma","Lazio Rom","Serie A",3.3,3.2,2.2,1,1,1,2,2
+2014-12-07,Atalanta,Cesena,"Serie A",1.67,3.4,5.5,1,3,2,2,1
+2014-12-07,"CFC Genua","AC Milan","Serie A",2.8,3.2,2.5,1,1,0,0,1
+2014-12-07,"Inter Mailand",Udinese,"Serie A",1.6,3.8,5.5,1,1,0,2,2
+2014-12-08,Cagliari,Chievo,"Serie A",1.91,3.4,4,0,0,2,2,2
+2014-12-08,"Hellas Verona",Sampdoria,"Serie A",2.7,2.95,2.75,1,1,1,3,2
+2014-12-13,Palermo,Sassuolo,"Serie A",1.95,3.25,4,1,2,0,1,1
+2014-12-13,"Lazio Rom",Atalanta,"Serie A",1.6,3.6,6,0,3,0,0,1
+2014-12-14,Juventus,Sampdoria,"Serie A",1.36,4.5,9,1,1,0,1,x
+2014-12-14,"FC Parma",Cagliari,"Serie A",2.3,3.2,3.1,0,0,0,0,x
+2014-12-14,"CFC Genua","AS Roma","Serie A",3.75,3.2,2.05,0,0,1,1,2
+2014-12-14,Udinese,"Hellas Verona","Serie A",1.8,3.4,4.5,1,1,1,2,2
+2014-12-14,Cesena,Fiorentina,"Serie A",6.5,4,1.5,0,1,1,4,2
+2014-12-14,"AC Milan","SSC Napoli","Serie A",2.7,3.3,2.65,1,2,0,0,1
+2014-12-15,"FC Empoli",Torino,"Serie A",2.6,3.2,2.7,0,0,0,0,x
+2014-12-15,Chievo,"Inter Mailand","Serie A",3.6,3.25,2.05,0,0,1,2,2
+2014-12-18,Cagliari,Juventus,"Serie A",7.75,4.33,1.4,0,1,2,3,2
+2014-12-18,"SSC Napoli","FC Parma","Serie A",1.33,4.75,9.5,2,2,0,0,1
+2014-12-20,Sassuolo,Cesena,"Serie A",1.5,3.8,7,0,1,0,1,x
+2014-12-20,"AS Roma","AC Milan","Serie A",1.78,3.7,4.6,0,0,0,0,x
+2014-12-21,"Hellas Verona",Chievo,"Serie A",2.4,3.1,3,0,0,0,1,2
+2014-12-21,Atalanta,Palermo,"Serie A",2.4,3,3.1,1,3,3,3,x
+2014-12-21,Fiorentina,"FC Empoli","Serie A",1.53,4,6,1,1,0,1,x
+2014-12-21,Sampdoria,Udinese,"Serie A",1.85,3.3,4.33,1,2,2,2,x
+2014-12-21,Torino,"CFC Genua","Serie A",2,3.25,3.8,0,2,1,1,1
+2014-12-21,"Inter Mailand","Lazio Rom","Serie A",2.15,3.3,3.3,0,2,2,2,x
+2015-01-10,Sassuolo,Udinese,"Serie A",2.2,3.2,3.3,1,1,1,1,x
+2015-01-10,Torino,"AC Milan","Serie A",2.7,3.2,2.6,0,1,1,1,x
+2015-01-11,"Inter Mailand","CFC Genua","Serie A",1.75,3.6,4.5,2,3,0,1,1
+2015-01-11,Sampdoria,"FC Empoli","Serie A",1.75,3.6,4.5,0,1,0,0,1
+2015-01-11,"AS Roma","Lazio Rom","Serie A",1.95,3.4,3.8,0,2,2,2,x
+2015-01-11,Cagliari,Cesena,"Serie A",1.7,3.65,4.8,2,2,0,1,1
+2015-01-11,Atalanta,Chievo,"Serie A",2.1,3.1,3.7,0,1,0,1,x
+2015-01-11,"Hellas Verona","FC Parma","Serie A",2.1,3.3,3.4,1,3,0,1,1
+2015-01-11,Fiorentina,Palermo,"Serie A",1.7,3.65,4.8,1,4,0,3,1
+2015-01-11,"SSC Napoli",Juventus,"Serie A",2.8,3.3,2.45,0,1,1,3,2
+2015-01-17,"FC Empoli","Inter Mailand","Serie A",3.45,3.3,2.1,0,0,0,0,x
+2015-01-17,Palermo,"AS Roma","Serie A",3.45,3.3,2.1,1,1,0,1,x
+2015-01-18,"Lazio Rom","SSC Napoli","Serie A",2.45,3.2,2.9,0,0,1,1,2
+2015-01-18,Udinese,Cagliari,"Serie A",2.05,3.2,3.7,0,2,1,2,x
+2015-01-18,Cesena,Torino,"Serie A",4.1,3.3,1.91,1,2,2,3,2
+2015-01-18,Chievo,Fiorentina,"Serie A",3.8,3.25,2,0,1,1,2,2
+2015-01-18,"CFC Genua",Sassuolo,"Serie A",2.35,3.2,3,1,3,1,3,x
+2015-01-18,"AC Milan",Atalanta,"Serie A",1.55,3.9,6,0,0,1,1,2
+2015-01-18,"FC Parma",Sampdoria,"Serie A",2.7,3.1,2.65,0,0,0,2,2
+2015-01-18,Juventus,"Hellas Verona","Serie A",1.2,6.5,12.5,2,4,0,0,1
+2015-01-24,Cagliari,Sassuolo,"Serie A",2.3,3,3.3,1,2,0,1,1
+2015-01-24,"Lazio Rom","AC Milan","Serie A",1.95,3.3,3.9,0,3,1,1,1
+2015-01-25,"Hellas Verona",Atalanta,"Serie A",2.5,3,2.95,0,1,0,0,1
+2015-01-25,"FC Parma",Cesena,"Serie A",1.67,3.6,5.25,0,1,1,2,2
+2015-01-25,Juventus,Chievo,"Serie A",1.16,6.5,19.5,0,2,0,0,1
+2015-01-25,Sampdoria,Palermo,"Serie A",2.05,3.2,3.7,1,1,0,1,x
+2015-01-25,Fiorentina,"AS Roma","Serie A",2.5,3.25,3,1,1,0,1,x
+2015-01-26,"FC Empoli",Udinese,"Serie A",2.1,3.25,3.5,1,1,1,2,2
+2015-01-26,"SSC Napoli","CFC Genua","Serie A",1.4,4.5,7.5,1,2,0,1,1
+2015-01-31,"CFC Genua",Fiorentina,"Serie A",3.1,3.2,2.3,1,1,0,1,x
+2015-01-31,"AS Roma","FC Empoli","Serie A",1.5,3.8,7,0,1,1,1,x
+2015-02-01,Sassuolo,"Inter Mailand","Serie A",3.2,3.1,2.3,2,3,0,1,1
+2015-02-01,Cesena,"Lazio Rom","Serie A",6,4,1.53,0,2,0,1,1
+2015-02-01,Chievo,"SSC Napoli","Serie A",5,3.3,1.75,1,1,1,2,2
+2015-02-01,Palermo,"Hellas Verona","Serie A",1.83,3.6,4,1,2,1,1,1
+2015-02-01,Torino,Sampdoria,"Serie A",2.1,3.1,3.7,2,5,0,1,1
+2015-02-01,Udinese,Juventus,"Serie A",7.25,4.1,1.45,0,0,0,0,x
+2015-02-01,"AC Milan","FC Parma","Serie A",1.6,4,5,1,3,1,1,1
+2015-01-25,"Inter Mailand",Torino,"Serie A",1.83,3.5,4.2,0,0,0,1,2
+2015-02-01,Atalanta,Cagliari,"Serie A",2.2,3.2,3.3,1,2,1,1,1
+2014-11-18,Japan,Australien,"Welt Freundschaftsspiele",1.62,3.6,5.75,0,2,0,1,1
+2014-11-18,China,Honduras,"Welt Freundschaftsspiele",2,3.3,3.7,0,0,0,0,x
+2014-11-18,Iran,Südkorea,"Welt Freundschaftsspiele",2.4,3,3.1,0,1,0,0,1
+2014-11-18,Slowakei,Finnland,"Welt Freundschaftsspiele",1.75,3.6,4.5,2,2,1,1,1
+2014-11-18,Griechenland,Serbien,"Welt Freundschaftsspiele",2.7,3.2,2.7,0,0,0,2,2
+2014-11-18,Weißrussland,Mexiko,"Welt Freundschaftsspiele",5,3.75,1.67,0,3,0,2,1
+2014-11-18,Slowenien,Kolumbien,"Welt Freundschaftsspiele",5,3.5,1.72,0,0,1,1,2
+2014-11-18,Österreich,Brasilien,"Welt Freundschaftsspiele",8,4.2,1.42,0,1,0,2,2
+2014-11-18,Estland,Jordanien,"Welt Freundschaftsspiele",2.1,3.2,3.5,1,1,0,0,1
+2014-11-18,Rumänien,Dänemark,"Welt Freundschaftsspiele",2.4,3.2,2.9,0,2,0,0,1
+2014-11-18,Ukraine,Litauen,"Welt Freundschaftsspiele",1.4,4.5,7.5,0,0,0,0,x
+2014-11-18,Ungarn,Russland,"Welt Freundschaftsspiele",3.3,3.3,2.15,0,1,0,2,2
+2014-11-18,Spanien,Deutschland,"Welt Freundschaftsspiele",2.2,3.5,3.4,0,0,0,1,2
+2014-11-18,Polen,Schweiz,"Welt Freundschaftsspiele",2.6,3.2,2.8,1,2,1,2,x
+2014-11-18,Irland,USA,"Welt Freundschaftsspiele",2.4,3.2,2.95,1,4,1,1,1
+2014-11-18,Italien,Albanien,"Welt Freundschaftsspiele",1.55,4,5.75,0,1,0,0,1
+2014-11-18,Frankreich,Schweden,"Welt Freundschaftsspiele",1.45,4.2,7,0,1,0,0,1
+2014-11-18,Schottland,England,"Welt Freundschaftsspiele",3.3,3.2,2.2,0,1,1,3,2
+2014-11-19,Bolivien,Venezuela,"Welt Freundschaftsspiele",1.65,3.7,5.25,1,3,1,2,1
+2014-11-19,Chile,Uruguay,"Welt Freundschaftsspiele",1.95,3.3,3.9,1,1,1,2,2
+2014-11-19,Nicaragua,"El Salvador","Welt Freundschaftsspiele",4.75,3.7,1.67,0,0,1,2,2
+2014-11-19,Panama,Kanada,"Welt Freundschaftsspiele",2,3.3,3.7,0,0,0,0,x
+2014-11-19,Peru,Paraguay,"Welt Freundschaftsspiele",2.15,3.3,3.3,0,2,1,1,1

@@ -143,13 +143,14 @@ public class Bwin {
             for (int j = 1; j <= driver.findElements(By.xpath(XPath.getAnzahlErgebnis(i))).size(); j++) {
                 String mannschaften = driver.findElements(By.xpath(XPath.getErgebnisMannschaften(i, j))).get(0).getText();
                 String tore = driver.findElements(By.xpath(XPath.getErgebnisTore(i, j))).get(0).getText();
-                WebCrawler.dbmanage.saveCrawlErgebnis(makeCrawlErgebnis(mannschaften, tore, date));
+                String uhrzeit = driver.findElements(By.xpath(XPath.getErgebnisUhrzeit(i, j))).get(0).getText(); 
+                WebCrawler.dbmanage.saveCrawlErgebnis(makeCrawlErgebnis(mannschaften, tore, date, uhrzeit));
             }
         }
         driver.close();
     }
 
-    private CrawlErgebnis makeCrawlErgebnis(String mannschaften, String tore, String date)  {
+    private CrawlErgebnis makeCrawlErgebnis(String mannschaften, String tore, String date,String uhrzeit)  {
         CrawlErgebnis ce = new CrawlErgebnis();
         ce.setMannschaft_1(splitErgebnisMannschaf_1(mannschaften));
         ce.setMannschaft_2(splitErgebnisMannschaf_2(mannschaften));
@@ -158,7 +159,8 @@ public class Bwin {
         
         if(tore.contains("Verschoben")){
             logger.info("match verschoben: try to delete match");
-            WebCrawler.dbmanage.deleteBegegnung(splitErgebnisMannschaf_1(mannschaften),splitErgebnisMannschaf_2(mannschaften),getDateFromCrawlErgebnisString(date));
+            WebCrawler.dbmanage.deleteBegegnung(splitErgebnisMannschaf_1(mannschaften),splitErgebnisMannschaf_2(mannschaften),getDateFromCrawlErgebnisString(date,uhrzeit));
+            ce.setDate(getDateFromCrawlErgebnisString(date,uhrzeit));
             return ce;
         }
         
@@ -174,7 +176,7 @@ public class Bwin {
         ce.setH_tore_2(getToreM2(halbzeitErg));
         ce.setTore_1(getToreM1(gesamtErg));
         ce.setTore_2(getToreM2(gesamtErg));
-        ce.setDate(getDateFromCrawlErgebnisString(date));
+        ce.setDate(getDateFromCrawlErgebnisString(date,uhrzeit));
         if (ce.getTore_1() > ce.getTore_2()) {
             ce.setSieger("1");
         } else if (ce.getTore_1() == ce.getTore_2()) {
@@ -191,19 +193,21 @@ public class Bwin {
         return date.substring(index + 1);
     }
 
-    private Date getDateFromCrawlErgebnisString(String date) {
+    private Date getDateFromCrawlErgebnisString(String date,String uhrzeit) {
         Date d;
-        SimpleDateFormat formatter = new SimpleDateFormat("dd. MMMM yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd. MMMM yyyy HH:mm");
         try {
-            d = formatter.parse(splitDateFromErgebnisString(date));
+            d = formatter.parse(splitDateFromErgebnisString(date)+" "+uhrzeit);
         } catch (ParseException e) {
-            logger.debug("CONVERT ERROR can not convert " + date + " to Date");
+            logger.error("CONVERT ERROR can not convert " + date + " to Date");
             Calendar c1 = GregorianCalendar.getInstance();
             c1.set(1753, Calendar.JANUARY, 01);
             d = new Date(c1.getTimeInMillis());
         }
         return d;
     }
+    
+
 
     private String splitHalbzeitErgebnis(String erg) {
         int index = erg.indexOf("(");

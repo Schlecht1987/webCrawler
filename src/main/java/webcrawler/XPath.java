@@ -73,5 +73,9 @@ public class XPath {
         
         return "//*[@id='result-items']/div["+i+"]/table/tbody/tr["+j+"]/td[3]";
     }
+    
+    public static String getErgebnisUhrzeit(int i, int j){
+        return "//*[@id='result-items']/div["+i+"]/table/tbody/tr["+j+"]/td[1]";
+    }
 
 }

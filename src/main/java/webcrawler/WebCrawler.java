@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import lib.NMAClientLib;
+import main.ReadCSV;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -86,12 +87,11 @@ public class WebCrawler {
     public static void crawl(int count) {
         if (dbmanage == null) {
             dbmanage = new DbManage();
+         //   ReadCSV obj = new ReadCSV();
+       //     obj.run();
         }
-       
-         crawlBwin(count);
-         crawlErgebnisseBewin(count);
-
-         
+        crawlBwin(count);
+        crawlErgebnisseBewin(count);
         dbmanage.sessionFactory.close();
         dbmanage= null;
     }
@@ -114,7 +114,7 @@ public class WebCrawler {
      
         zstNachher = System.currentTimeMillis();
         logger.info("##############finish crawling matches: Time: "+ ((zstNachher - zstVorher)/1000) + " sec ################");
-        if(((zstNachher - zstVorher)/1000)< 30){
+        if(((zstNachher - zstVorher)/1000)< 10){
             notifiy("ToFastCrawl","Something wrong. To fast crawl: Time :"+((zstNachher - zstVorher)/1000)+ "At Crawl number: "+count);
         }
         
@@ -134,7 +134,7 @@ public class WebCrawler {
        // bwin.crawlErgebnisse(WORLD_FRIENDSHIP_ERG_URL,WORLD_FRIENDSHIP);
         zstNachher = System.currentTimeMillis();
         logger.info("############finish crawling results: Time: "+ ((zstNachher - zstVorher)/1000) + " sec ################");
-        if(((zstNachher - zstVorher)/1000)< 30){
+        if(((zstNachher - zstVorher)/1000)< 10){
             notifiy("ToFastCrawl","Something wrong. To fast crawl: Time :"+((zstNachher - zstVorher)/1000)+ "At Crawl number: "+count);
         }
     }

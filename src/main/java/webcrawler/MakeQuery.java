@@ -1,7 +1,9 @@
 package webcrawler;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 
@@ -18,8 +20,20 @@ public class MakeQuery {
      * @return the specific begegnungs query
      */
     public static String getSpecificBegegnungsQuery(int mannschaft_1,int mannschaft_2, Date date){
-        String query = "from Begegnung where datum = '" +getHQLDateFormatFromDate(date) + "' AND mannschaft_1 = " + mannschaft_1
+        Calendar calfrom = Calendar.getInstance();
+        Calendar caluntil = Calendar.getInstance();
+        calfrom.setTime(date);
+        caluntil.setTime(date);
+        calfrom.set(Calendar.HOUR_OF_DAY,0);
+        caluntil.set(Calendar.HOUR_OF_DAY,23);
+        
+        String query = "from Begegnung where datum BETWEEN '" +getHQLDateFormatFromDate(calfrom.getTime()) + "'AND'"+getHQLDateFormatFromDate(caluntil.getTime()) +"' AND mannschaft_1 = " + mannschaft_1
                 + " AND mannschaft_2 = " + mannschaft_2 + " ";
+        return query;
+    }
+    
+    public static String getBegegnungById(int id){
+        String query = "from Begegnung where id = "+id+"";
         return query;
     }
     
