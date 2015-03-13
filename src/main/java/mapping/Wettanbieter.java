@@ -3,10 +3,12 @@ package mapping;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,6 +29,7 @@ public class Wettanbieter {
     private int id;
     
     /** The name. */
+    @Column(nullable = false)
     private String name;
     
     /** The quote. */

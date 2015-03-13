@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -37,20 +39,24 @@ public class Begegnung {
 
     /** The datum. */
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
     private Date       datum;
     
     /** The spieltyp. */
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Spieltyp spieltyp ;
     
 
     /** The mannschaft_1. */
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Mannschaft mannschaft_1;
     
 
     /** The mannschaft_2. */
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Mannschaft mannschaft_2;
     
     /** The quote. */

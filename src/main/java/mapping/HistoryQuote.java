@@ -2,6 +2,7 @@ package mapping;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,21 +27,25 @@ public class HistoryQuote {
     private int id;
     
     /** The quote1. */
+    @Column(nullable = false)
     private float quote1;
     
     /** The quote x. */
+    @Column(nullable = false)
     private float quoteX;
     
     /** The quote2. */
+    @Column(nullable = false)
     private float quote2;
     
     /** The datum. */
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
     private Date       datum;
     
     /** The quote. */
     @ManyToOne
-    @JoinColumn(name="quote_id")
+    @JoinColumn(name="quote_id",nullable = false)
     private Quote quote;
     
     /**

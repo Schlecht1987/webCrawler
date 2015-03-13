@@ -1,5 +1,6 @@
 package mapping;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,23 +22,23 @@ public class Ergebnis {
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
     
-    @JoinColumn(name="m1_tore")
+    @Column(name="m1_tore",nullable = false)
     private int m1_tore;
     
-    @JoinColumn(name="m2_tore")
+    @Column(name="m2_tore",nullable = false)
     private int m2_tore;
     
-    @JoinColumn(name="m1_h_tore")
+    @Column(name="m1_h_tore",nullable = false)
     private int m1_h_tore;
     
-    @JoinColumn(name="m2_h_tore")
+    @Column(name="m2_h_tore",nullable = false)
     private int m2_h_tore;
     
-    @JoinColumn(name="sieger")
+    @Column(name="sieger",nullable = false)
     private String sieger;
     
     @OneToOne
-    @JoinColumn(name="begenung_id")
+    @JoinColumn(name="begenung_id", nullable = false)
     private Begegnung begegnung;
 
     

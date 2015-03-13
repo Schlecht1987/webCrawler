@@ -29,22 +29,25 @@ public class Quote {
     private int   id;
     
     /** The quote m1. */
+    @JoinColumn(nullable = false)
     private float quoteM1;
     
     /** The quote x. */
+    @JoinColumn(nullable = false)
     private float quoteX;
     
     /** The quote m2. */
+    @JoinColumn(nullable = false)
     private float quoteM2;
     
     /** The begegnung. */
     @ManyToOne
-    @JoinColumn(name="begegnung_id")
+    @JoinColumn(name="begegnung_id", nullable = false)
     private Begegnung begegnung;
     
     /** The wettanbieter. */
     @ManyToOne
-    @JoinColumn(name="wettanbieter_id")
+    @JoinColumn(name="wettanbieter_id", nullable = false)
     private Wettanbieter wettanbieter;
     
     /** The history quoten. */
