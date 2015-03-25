@@ -1,3 +1,5 @@
+// Klasse für automatisches Generieren von Daten,
+// Wird nicht benötigt und ist auch nicht fertig
 package main;
 
 import java.util.ArrayList;

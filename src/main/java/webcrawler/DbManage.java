@@ -70,6 +70,13 @@ public class DbManage {
         return false;
     }
 
+    /**
+     * Update object.
+     *
+     * @param o the o
+     * @param info the info
+     * @return the boolean
+     */
     private Boolean updateObject(Object o, String info) {
         Session session = sessionFactory.openSession();
         try {
@@ -89,6 +96,13 @@ public class DbManage {
         return false;
     }
 
+    /**
+     * Delete object.
+     *
+     * @param o the o
+     * @param info the info
+     * @return the boolean
+     */
     private Boolean deleteObject(Object o, String info) {
         Session session = sessionFactory.openSession();
         try {
@@ -133,6 +147,13 @@ public class DbManage {
         return null;
     }
 
+    /**
+     * Delete begegnung.
+     *
+     * @param mannschaft_1 the mannschaft_1
+     * @param mannschaft_2 the mannschaft_2
+     * @param date the date
+     */
     public void deleteBegegnung(String mannschaft_1, String mannschaft_2, Date date) {
         if (checkIfMannschaftAlreadyExist(mannschaft_1) && checkIfMannschaftAlreadyExist(mannschaft_2)) {
             int id_m1 = getMannschaftFromString(mannschaft_1).getId();
@@ -157,6 +178,11 @@ public class DbManage {
         }
     }
 
+    /**
+     * Delete begegnung by id.
+     *
+     * @param id the id
+     */
     public void deleteBegegnungById(int id) {
 
         Begegnung b = getBegegenungById(id);
@@ -216,6 +242,11 @@ public class DbManage {
 
     }
 
+    /**
+     * Save crawl ergebnis.
+     *
+     * @param ce the ce
+     */
     public void saveCrawlErgebnis(CrawlErgebnis ce) {
 
         if (checkIfMannschaftAlreadyExist(ce.getMannschaft_1()) && checkIfMannschaftAlreadyExist(ce.getMannschaft_2())) {
@@ -241,6 +272,12 @@ public class DbManage {
 
     }
 
+    /**
+     * Check if eregebnis already set.
+     *
+     * @param b the b
+     * @return the boolean
+     */
     private Boolean checkIfEregebnisAlreadySet(Begegnung b) {
         List<Ergebnis> erg = (List<Ergebnis>) getQuery(MakeQuery.checkIfBegegnungHasAlreadyAErebnis(b.getId()));
         if (erg.size() > 0) {
@@ -249,6 +286,13 @@ public class DbManage {
         return false;
     }
 
+    /**
+     * Convert crawl ergebnis to ergebnis.
+     *
+     * @param ce the ce
+     * @param b the b
+     * @return the ergebnis
+     */
     private Ergebnis convertCrawlErgebnisToErgebnis(CrawlErgebnis ce, Begegnung b) {
         Ergebnis e = new Ergebnis();
         e.setM1_h_tore(ce.getH_tore_1());
@@ -260,6 +304,12 @@ public class DbManage {
         return e;
     }
 
+    /**
+     * Update quote and save to history.
+     *
+     * @param old the old
+     * @param latest the latest
+     */
     private void updateQuoteAndSaveToHistory(Quote old, Quote latest) {
         logger.info("FOUND CHNAGED QUOTE");
         HistoryQuote hq = new HistoryQuote();
@@ -276,6 +326,13 @@ public class DbManage {
         saveObject(hq, printHistoryQuote(hq));
     }
 
+    /**
+     * Compare quote with crawl infos.
+     *
+     * @param old the old
+     * @param latest the latest
+     * @return the boolean
+     */
     private Boolean compareQuoteWithCrawlInfos(Quote old, Quote latest) {
         if (old.getQuoteM1() == latest.getQuoteM1() && old.getQuoteM2() == latest.getQuoteM2() && old.getQuoteX() == latest.getQuoteX()) {
             return true;
@@ -286,7 +343,9 @@ public class DbManage {
     /**
      * Check if begegnung already exist.
      *
-     * @param cf the cf
+     * @param mannschaft_1 the mannschaft_1
+     * @param mannschaft_2 the mannschaft_2
+     * @param date the date
      * @return the boolean
      */
     private Boolean checkIfBegegnungAlreadyExist(int mannschaft_1, int mannschaft_2, Date date) {
@@ -310,6 +369,14 @@ public class DbManage {
 
     }
 
+    /**
+     * Gets the begegnung.
+     *
+     * @param mannschaft_1 the mannschaft_1
+     * @param mannschaft_2 the mannschaft_2
+     * @param date the date
+     * @return the begegnung
+     */
     private Begegnung getBegegnung(int mannschaft_1, int mannschaft_2, Date date) {
         List<Begegnung> begegnungen = null;
         begegnungen = (List<Begegnung>) getQuery(MakeQuery.getSpecificBegegnungsQuery(mannschaft_1, mannschaft_2, date));
@@ -327,6 +394,12 @@ public class DbManage {
         }
     }
 
+    /**
+     * Gets the begegenung by id.
+     *
+     * @param id the id
+     * @return the begegenung by id
+     */
     private Begegnung getBegegenungById(int id) {
         List<Begegnung> begegnungen = null;
         begegnungen = (List<Begegnung>) getQuery(MakeQuery.getBegegnungById(id));
@@ -344,6 +417,12 @@ public class DbManage {
         }
     }
 
+    /**
+     * Check if mannschaft already exist.
+     *
+     * @param man the man
+     * @return the boolean
+     */
     private Boolean checkIfMannschaftAlreadyExist(String man) {
         List<Mannschaft> mannschaft = null;
         mannschaft = (List<Mannschaft>) getQuery(MakeQuery.getMannschaftFromStringQuery(man));
@@ -360,6 +439,12 @@ public class DbManage {
         }
     }
 
+    /**
+     * Gets the mannschaft from string.
+     *
+     * @param man the man
+     * @return the mannschaft from string
+     */
     private Mannschaft getMannschaftFromString(String man) {
         List<Mannschaft> mannschaft = null;
         mannschaft = (List<Mannschaft>) getQuery(MakeQuery.getMannschaftFromStringQuery(man));
@@ -458,6 +543,12 @@ public class DbManage {
         return q;
     }
 
+    /**
+     * Creates the mannschaft if not exists.
+     *
+     * @param name the name
+     * @return the mannschaft
+     */
     private Mannschaft createMannschaftIfNotExists(String name) {
         Mannschaft m;
         if (checkIfMannschaftAlreadyExist(name)) {
@@ -475,6 +566,8 @@ public class DbManage {
      *
      * @param cf the cf
      * @param spieltyp the spieltyp
+     * @param m1 the m1
+     * @param m2 the m2
      * @return the begegnung
      */
     private Begegnung convertCrawlInfos(CrawlInfos cf, Spieltyp spieltyp, Mannschaft m1, Mannschaft m2) {
@@ -491,6 +584,7 @@ public class DbManage {
      *
      * @param crawlInfos the crawl infos
      * @param begegnung the begegnung
+     * @param w the w
      * @return the quote
      */
     private Quote convertCrawlInfos(CrawlInfos crawlInfos, Begegnung begegnung, Wettanbieter w) {
@@ -572,16 +666,34 @@ public class DbManage {
         return info;
     }
 
+    /**
+     * Prints the history quote.
+     *
+     * @param hq the hq
+     * @return the string
+     */
     private String printHistoryQuote(HistoryQuote hq) {
         return "HistoryQuote: Quote change from:" + printQuote(hq.getQuote()) + "  to :" + hq.getQuote1() + "|" + hq.getQuoteX() + "|"
                 + hq.getQuote2();
     }
 
+    /**
+     * Prints the ergebnis.
+     *
+     * @param e the e
+     * @return the string
+     */
     private String printErgebnis(Ergebnis e) {
         return "Ergebnis: " + e.getBegegnung().getMannschaft_1().getName() + " vs " + e.getBegegnung().getMannschaft_2().getName() + " "
                 + e.getM1_tore() + ":" + e.getM2_tore() + " (" + e.getM1_h_tore() + ":" + e.getM2_h_tore() + ")";
     }
 
+    /**
+     * Prints the mannschaft.
+     *
+     * @param m the m
+     * @return the string
+     */
     private String printMannschaft(Mannschaft m) {
         return "Mannschaft: " + m.getName();
     }

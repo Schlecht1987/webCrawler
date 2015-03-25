@@ -1,3 +1,5 @@
+// Klasse für einlesen einer CSV Datei. Da sich einmal das Datenbankschema geändert hat.
+// Klasse ist nicht wichtig
 package main;
 
 import java.io.BufferedReader;
@@ -18,10 +20,18 @@ import webcrawler.CrawlErgebnis;
 import webcrawler.CrawlInfos;
 import webcrawler.WebCrawler;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReadCSV.
+ */
 public class ReadCSV {
 
+    /** The logger. */
     private final Logger logger = LoggerFactory.getLogger(ReadCSV.class);
 
+    /**
+     * Run.
+     */
     public void run() {
 
         String csvFile = "oldDatabasejs.csv";
@@ -83,6 +93,12 @@ public class ReadCSV {
         System.out.println("Done");
     }
 
+    /**
+     * Gets the date from crawl infos string.
+     *
+     * @param date the date
+     * @return the date from crawl infos string
+     */
     private Date getDateFromCrawlInfosString(String date) {
         Date d;
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");

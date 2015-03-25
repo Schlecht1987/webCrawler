@@ -127,6 +127,8 @@ public class CrawlInfos {
     
     /**
      * Prints the.
+     *
+     * @return the string
      */
     public String print(){
         return "    "+getHQLDateFormatFromDate(this.getDate() )+" --- "+this.getErsteMannschaft()+" "+this.getHeimMannschaftQuote()+" | "+this.getUnentschiedenQuote()+" | "+this.getZweiteMannschaftQuote()+" "+this.getZweiteMannschaft()+" --- from "+this.wettanbieter;
@@ -134,6 +136,12 @@ public class CrawlInfos {
 
     
    
+    /**
+     * Gets the HQL date format from date.
+     *
+     * @param date the date
+     * @return the HQL date format from date
+     */
     private static String getHQLDateFormatFromDate(Date date) {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(date);
     }
@@ -178,11 +186,21 @@ public class CrawlInfos {
     }
 
     
+    /**
+     * Gets the date.
+     *
+     * @return the date
+     */
     public Date getDate() {
         return date;
     }
 
     
+    /**
+     * Sets the date.
+     *
+     * @param date the new date
+     */
     public void setDate(Date date) {
         this.date = date;
     }

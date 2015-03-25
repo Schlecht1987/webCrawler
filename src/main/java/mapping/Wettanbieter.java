@@ -38,6 +38,9 @@ public class Wettanbieter {
     private Collection<Quote> quote = new ArrayList<Quote>();
     
     
+    /**
+     * Instantiates a new wettanbieter.
+     */
     public Wettanbieter(){
         
     }

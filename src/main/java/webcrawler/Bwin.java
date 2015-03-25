@@ -59,6 +59,13 @@ public class Bwin {
         logger.info("finished crawling :" + spieltyp);
     }
 
+    /**
+     * Gets the date from crawl infos string.
+     *
+     * @param date the date
+     * @param urhzeit the urhzeit
+     * @return the date from crawl infos string
+     */
     private Date getDateFromCrawlInfosString(String date ,String urhzeit) {
         Date d;
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
@@ -73,6 +80,12 @@ public class Bwin {
         return d;
     }
 
+    /**
+     * Split date from crawl infos.
+     *
+     * @param date the date
+     * @return the string
+     */
     private static String splitDateFromCrawlInfos(String date) {
         int index = date.indexOf("-");
         return date.substring(index + 2);
@@ -105,6 +118,7 @@ public class Bwin {
      * @param d the d
      * @param date the date
      * @param spieltyp the spieltyp
+     * @param uhrzeit the uhrzeit
      * @return the infos
      */
     private CrawlInfos getInfos(String xpath, WebDriver d, String date, String spieltyp,String uhrzeit) {
@@ -123,6 +137,12 @@ public class Bwin {
 
     //---------------------------CRAWL ERGEBNIS-------------------------
 
+    /**
+     * Crawl ergebnisse.
+     *
+     * @param url the url
+     * @param spieltyp the spieltyp
+     */
     public void crawlErgebnisse(String url, String spieltyp) {
         logger.info("start crawling results from :" + spieltyp + "........");
         try {
@@ -135,6 +155,11 @@ public class Bwin {
         logger.info("finished crawling results from :" + spieltyp + "........");
     }
 
+    /**
+     * Crawl ergebnisse.
+     *
+     * @param url the url
+     */
     private void crawlErgebnisse(String url)  {
         WebDriver driver = new HtmlUnitDriver();
         driver.get(url);
@@ -150,6 +175,15 @@ public class Bwin {
         driver.close();
     }
 
+    /**
+     * Make crawl ergebnis.
+     *
+     * @param mannschaften the mannschaften
+     * @param tore the tore
+     * @param date the date
+     * @param uhrzeit the uhrzeit
+     * @return the crawl ergebnis
+     */
     private CrawlErgebnis makeCrawlErgebnis(String mannschaften, String tore, String date,String uhrzeit)  {
         CrawlErgebnis ce = new CrawlErgebnis();
         ce.setMannschaft_1(splitErgebnisMannschaf_1(mannschaften));
@@ -188,11 +222,24 @@ public class Bwin {
       return ce;
     }
 
+    /**
+     * Split date from ergebnis string.
+     *
+     * @param date the date
+     * @return the string
+     */
     private String splitDateFromErgebnisString(String date) {
         int index = date.indexOf(",");
         return date.substring(index + 1);
     }
 
+    /**
+     * Gets the date from crawl ergebnis string.
+     *
+     * @param date the date
+     * @param uhrzeit the uhrzeit
+     * @return the date from crawl ergebnis string
+     */
     private Date getDateFromCrawlErgebnisString(String date,String uhrzeit) {
         Date d;
         SimpleDateFormat formatter = new SimpleDateFormat("dd. MMMM yyyy HH:mm");
@@ -209,11 +256,23 @@ public class Bwin {
     
 
 
+    /**
+     * Split halbzeit ergebnis.
+     *
+     * @param erg the erg
+     * @return the string
+     */
     private String splitHalbzeitErgebnis(String erg) {
         int index = erg.indexOf("(");
         return erg.substring(index + 1).replace(")", "");
     }
 
+    /**
+     * Split gesamt ergebnis.
+     *
+     * @param erg the erg
+     * @return the string
+     */
     private String splitGesamtErgebnis(String erg) {
 
             int index = erg.indexOf("(");
@@ -221,16 +280,34 @@ public class Bwin {
 
     }
 
+    /**
+     * Split ergebnis mannschaf_1.
+     *
+     * @param erg the erg
+     * @return the string
+     */
     private String splitErgebnisMannschaf_1(String erg) {
         int index = erg.indexOf(" -");
         return erg.substring(0, index - 0);
     }
 
+    /**
+     * Split ergebnis mannschaf_2.
+     *
+     * @param erg the erg
+     * @return the string
+     */
     private String splitErgebnisMannschaf_2(String erg) {
         int index = erg.indexOf(" -");
         return erg.substring(index + 3);
     }
 
+    /**
+     * Gets the tore m1.
+     *
+     * @param s the s
+     * @return the tore m1
+     */
     private int getToreM1(String s) {
         int index = s.indexOf(":");
         try {
@@ -244,6 +321,12 @@ public class Bwin {
 
     }
 
+    /**
+     * Gets the tore m2.
+     *
+     * @param s the s
+     * @return the tore m2
+     */
     private int getToreM2(String s) {
         int index = s.indexOf(":");
         try {

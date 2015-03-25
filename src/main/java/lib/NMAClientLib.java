@@ -19,6 +19,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 
+// TODO: Auto-generated Javadoc
 /*
  * Author: Adriano Maia (adriano@usk.bz)
  * Version: 1.0.0 (4/10/2011)
@@ -28,22 +29,49 @@ import org.xml.sax.InputSource;
  *          - verify
  */
 
+/**
+ * The Class NMAClientLib.
+ */
 public class NMAClientLib {
+    
+    /** The default url. */
     private static String DEFAULT_URL = "https://nma.usk.bz";
+    
+    /** The notify path. */
     private static String NOTIFY_PATH = "/publicapi/notify";
+    
+    /** The verify path. */
     private static String VERIFY_PATH = "/publicapi/verify";
+    
+    /** The method post. */
     private static String METHOD_POST = "POST";
     
     // Defining some contants
+    /** The Constant UTF_8_ENCODING. */
     public static final String UTF_8_ENCODING = "UTF-8";
+    
+    /** The Constant MESSAGE_KEY_API_KEY. */
     public static final String MESSAGE_KEY_API_KEY = "apikey";
+    
+    /** The Constant MESSAGE_KEY_APP. */
     public static final String MESSAGE_KEY_APP = "application";
+    
+    /** The Constant MESSAGE_KEY_EVENT. */
     public static final String MESSAGE_KEY_EVENT = "event";
+    
+    /** The Constant MESSAGE_KEY_DESC. */
     public static final String MESSAGE_KEY_DESC = "description";
+    
+    /** The Constant MESSAGE_KEY_PRIORITY. */
     public static final String MESSAGE_KEY_PRIORITY = "priority";
+    
+    /** The Constant MESSAGE_KEY_DEV_KEY. */
     public static final String MESSAGE_KEY_DEV_KEY = "developerkey";
     
+    /** The last error. */
     private static String lastError = null;
+    
+    /** The encoding. */
     private static String encoding = null;
     
     /**
@@ -68,6 +96,14 @@ public class NMAClientLib {
      * param apiKey One or more 48 bytes long API key, separated by commas.
      * param devKey Developer key.
      * return result
+     *
+     * @param app the app
+     * @param event the event
+     * @param description the description
+     * @param priority the priority
+     * @param apiKey the api key
+     * @param devKey the dev key
+     * @return the int
      */
     public static int notify(String app, String event, String description, int priority, String apiKey, String devKey) {
         
@@ -171,25 +207,27 @@ public class NMAClientLib {
     }
     
     /**
-     * 
-     * @param app
-     * @param event
-     * @param description
-     * @param priority
-     * @param apiKey
-     * @return
+     * Notify.
+     *
+     * @param app the app
+     * @param event the event
+     * @param description the description
+     * @param priority the priority
+     * @param apiKey the api key
+     * @return the int
      */
     public static int notify(String app, String event, String description, int priority, String apiKey) {
         return notify(app, event, description, priority, apiKey, null);
     }
 
     /**
-     * 
-     * @param app
-     * @param event
-     * @param description
-     * @param apiKey
-     * @return
+     * Notify.
+     *
+     * @param app the app
+     * @param event the event
+     * @param description the description
+     * @param apiKey the api key
+     * @return the int
      */
     public static int notify(String app, String event, String description, String apiKey) {
         return notify(app, event, description, 0, apiKey, null);
@@ -209,6 +247,10 @@ public class NMAClientLib {
      * param apiKey Only one 48 bytes long API key.
      * param devKey Developer key.
      * return result
+     *
+     * @param apiKey the api key
+     * @param devKey the dev key
+     * @return the int
      */
     public static int verify(String apiKey, String devKey) {
         // First some parameter validation. Those tests are done again server-side, but there is no need to submit it if we know it's wrong.
@@ -297,20 +339,22 @@ public class NMAClientLib {
     }
     
     /**
-     * 
-     * @param apiKey
-     * @return
+     * Verify.
+     *
+     * @param apiKey the api key
+     * @return the int
      */
     public static int verify(String apiKey) {
         return verify(apiKey, null);
     }   
     
     /**
-     * Dynamically adds a url-form-encoded key/value to a StringBuilder 
+     * Dynamically adds a url-form-encoded key/value to a StringBuilder .
+     *
      * @param sb StringBuilder buffer used to build the final url-form-encoded data
      * @param name Key name
      * @param value Value
-     * @throws IOException 
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     private static void addEncodedParameter(StringBuilder sb, String name, String value) throws IOException 
     {
@@ -329,11 +373,21 @@ public class NMAClientLib {
         }
     }
     
+    /**
+     * Gets the last error.
+     *
+     * @return the last error
+     */
     public static String getLastError() {
         return lastError;
     }
     
     // Test case. Not meant to be used like a full featured command-line program.
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static void main(String[] args) {
         // Syntax
         if (args.length < 4) {
