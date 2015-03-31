@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 
 
 // TODO: Auto-generated Javadoc
@@ -52,6 +54,10 @@ public class MakeQuery {
      * @return the mannschaft from string query
      */
     public static String getMannschaftFromStringQuery(String mannschaft){
+
+        if(mannschaft.contains("'")){
+            mannschaft=mannschaft.replace("'", "''");
+        }
         String query = "from Mannschaft where name ='"+mannschaft+"' ";
         return query;
     }

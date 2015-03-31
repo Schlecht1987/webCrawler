@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 import main.Main;
@@ -19,6 +20,7 @@ import org.hibernate.Session;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,6 +43,7 @@ public class Bwin {
 
     }
 
+    
     //------------------------------------CRAWL BEGEGNUNG INFOS--------------------------------------
     /**
      * Crawl.
@@ -66,11 +69,11 @@ public class Bwin {
      * @param urhzeit the urhzeit
      * @return the date from crawl infos string
      */
-    private Date getDateFromCrawlInfosString(String date ,String urhzeit) {
+    private Date getDateFromCrawlInfosString(String date, String urhzeit) {
         Date d;
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         try {
-            d = formatter.parse(splitDateFromCrawlInfos(date)+" "+urhzeit);
+            d = formatter.parse(splitDateFromCrawlInfos(date) + " " + urhzeit);
         } catch (ParseException e) {
             logger.debug("CONVERT ERROR can not convert " + date + " to Date");
             Calendar c1 = GregorianCalendar.getInstance();
@@ -121,14 +124,14 @@ public class Bwin {
      * @param uhrzeit the uhrzeit
      * @return the infos
      */
-    private CrawlInfos getInfos(String xpath, WebDriver d, String date, String spieltyp,String uhrzeit) {
+    private CrawlInfos getInfos(String xpath, WebDriver d, String date, String spieltyp, String uhrzeit) {
         CrawlInfos b = new CrawlInfos();
         b.setErsteMannschaft(d.findElements(By.xpath(xpath + XPath.getErsteMannschaft())).get(0).getText());
         b.setHeimMannschaftQuote(d.findElements(By.xpath(xpath + XPath.getErsteMannschaftQuote())).get(0).getText());
         b.setUnentschiedenQuote(d.findElements(By.xpath(xpath + XPath.getUnentschiedenQuote())).get(0).getText());
         b.setZweiteMannschaft(d.findElements(By.xpath(xpath + XPath.getZweiteMannschaft())).get(0).getText());
         b.setZweiteMannschaftQuote(d.findElements(By.xpath(xpath + XPath.getZweiteMannschaftQuote())).get(0).getText());
-        b.setDate(getDateFromCrawlInfosString(date,uhrzeit));
+        b.setDate(getDateFromCrawlInfosString(date, uhrzeit));
         b.setSpieltyp(spieltyp);
         b.setWettanbieter(this.WETTANBIETER);
         logger.info("match found: " + b.print());
@@ -160,7 +163,7 @@ public class Bwin {
      *
      * @param url the url
      */
-    private void crawlErgebnisse(String url)  {
+    private void crawlErgebnisse(String url) {
         WebDriver driver = new HtmlUnitDriver();
         driver.get(url);
         for (int i = 1; i <= driver.findElements(By.xpath(XPath.getAnzahlErgebnise())).size(); i++) {
@@ -168,7 +171,7 @@ public class Bwin {
             for (int j = 1; j <= driver.findElements(By.xpath(XPath.getAnzahlErgebnis(i))).size(); j++) {
                 String mannschaften = driver.findElements(By.xpath(XPath.getErgebnisMannschaften(i, j))).get(0).getText();
                 String tore = driver.findElements(By.xpath(XPath.getErgebnisTore(i, j))).get(0).getText();
-                String uhrzeit = driver.findElements(By.xpath(XPath.getErgebnisUhrzeit(i, j))).get(0).getText(); 
+                String uhrzeit = driver.findElements(By.xpath(XPath.getErgebnisUhrzeit(i, j))).get(0).getText();
                 WebCrawler.dbmanage.saveCrawlErgebnis(makeCrawlErgebnis(mannschaften, tore, date, uhrzeit));
             }
         }
@@ -184,33 +187,34 @@ public class Bwin {
      * @param uhrzeit the uhrzeit
      * @return the crawl ergebnis
      */
-    private CrawlErgebnis makeCrawlErgebnis(String mannschaften, String tore, String date,String uhrzeit)  {
+    private CrawlErgebnis makeCrawlErgebnis(String mannschaften, String tore, String date, String uhrzeit) {
         CrawlErgebnis ce = new CrawlErgebnis();
         ce.setMannschaft_1(splitErgebnisMannschaf_1(mannschaften));
         ce.setMannschaft_2(splitErgebnisMannschaf_2(mannschaften));
         String halbzeitErg = "0:0";
         String gesamtErg = "0:0";
-        
-        if(tore.contains("Verschoben")){
+
+        if (tore.contains("Verschoben")||tore.contains("Falsche Spielansetzung")||tore.contains("Suspended")) {
             logger.info("match verschoben: try to delete match");
-            WebCrawler.dbmanage.deleteBegegnung(splitErgebnisMannschaf_1(mannschaften),splitErgebnisMannschaf_2(mannschaften),getDateFromCrawlErgebnisString(date,uhrzeit));
-            ce.setDate(getDateFromCrawlErgebnisString(date,uhrzeit));
+            WebCrawler.dbmanage.deleteBegegnung(splitErgebnisMannschaf_1(mannschaften), splitErgebnisMannschaf_2(mannschaften),
+                    getDateFromCrawlErgebnisString(date, uhrzeit));
+            ce.setDate(getDateFromCrawlErgebnisString(date, uhrzeit));
             return ce;
         }
-        
-        if(tore.contains("(")){
-             halbzeitErg = splitHalbzeitErgebnis(tore);
-             gesamtErg = splitGesamtErgebnis(tore);
-        
-        }else if(tore.length()<6){
+
+        if (tore.contains("(")) {
+            halbzeitErg = splitHalbzeitErgebnis(tore);
+            gesamtErg = splitGesamtErgebnis(tore);
+
+        } else if (tore.length() < 6) {
             halbzeitErg = tore;
-            gesamtErg = tore;        
+            gesamtErg = tore;
         }
         ce.setH_tore_1(getToreM1(halbzeitErg));
         ce.setH_tore_2(getToreM2(halbzeitErg));
         ce.setTore_1(getToreM1(gesamtErg));
         ce.setTore_2(getToreM2(gesamtErg));
-        ce.setDate(getDateFromCrawlErgebnisString(date,uhrzeit));
+        ce.setDate(getDateFromCrawlErgebnisString(date, uhrzeit));
         if (ce.getTore_1() > ce.getTore_2()) {
             ce.setSieger("1");
         } else if (ce.getTore_1() == ce.getTore_2()) {
@@ -218,8 +222,8 @@ public class Bwin {
         } else {
             ce.setSieger("2");
         }
-        logger.info("found result:  "+ce.print()); 
-      return ce;
+        logger.info("found result:  " + ce.print());
+        return ce;
     }
 
     /**
@@ -240,11 +244,11 @@ public class Bwin {
      * @param uhrzeit the uhrzeit
      * @return the date from crawl ergebnis string
      */
-    private Date getDateFromCrawlErgebnisString(String date,String uhrzeit) {
+    private Date getDateFromCrawlErgebnisString(String date, String uhrzeit) {
         Date d;
         SimpleDateFormat formatter = new SimpleDateFormat("dd. MMMM yyyy HH:mm");
         try {
-            d = formatter.parse(splitDateFromErgebnisString(date)+" "+uhrzeit);
+            d = formatter.parse(splitDateFromErgebnisString(date) + " " + uhrzeit);
         } catch (ParseException e) {
             logger.error("CONVERT ERROR can not convert " + date + " to Date");
             Calendar c1 = GregorianCalendar.getInstance();
@@ -253,8 +257,6 @@ public class Bwin {
         }
         return d;
     }
-    
-
 
     /**
      * Split halbzeit ergebnis.
@@ -275,8 +277,8 @@ public class Bwin {
      */
     private String splitGesamtErgebnis(String erg) {
 
-            int index = erg.indexOf("(");
-            return erg.substring(0, index - 1);
+        int index = erg.indexOf("(");
+        return erg.substring(0, index - 1);
 
     }
 

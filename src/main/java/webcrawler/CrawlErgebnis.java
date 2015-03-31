@@ -35,6 +35,8 @@ public class CrawlErgebnis {
     /** The h_tore_2. */
     public int h_tore_2;
     
+    public Boolean nullValue = false;
+    
     /**
      * Gets the mannschaft_1.
      *
@@ -50,6 +52,9 @@ public class CrawlErgebnis {
      * @param mannschaft_1 the new mannschaft_1
      */
     public void setMannschaft_1(String mannschaft_1) {
+        if(mannschaft_1 == null){
+            this.setNullValue(true);
+        }
         this.mannschaft_1 = mannschaft_1;
     }
     
@@ -68,6 +73,9 @@ public class CrawlErgebnis {
      * @param mannschaft_2 the new mannschaft_2
      */
     public void setMannschaft_2(String mannschaft_2) {
+        if(mannschaft_2 == null){
+            this.setNullValue(true);
+        }
         this.mannschaft_2 = mannschaft_2;
     }
     
@@ -86,6 +94,9 @@ public class CrawlErgebnis {
      * @param sieger the new sieger
      */
     public void setSieger(String sieger) {
+        if(sieger == null){
+            this.setNullValue(true);
+        }
         this.sieger = sieger;
     }
     
@@ -106,6 +117,9 @@ public class CrawlErgebnis {
      * @param tore_1 the new tore_1
      */
     public void setTore_1(int tore_1) {
+        if(tore_1 == -1){
+            this.setNullValue(true);
+        }
         this.tore_1 = tore_1;
     }
     
@@ -124,6 +138,9 @@ public class CrawlErgebnis {
      * @param tore_2 the new tore_2
      */
     public void setTore_2(int tore_2) {
+        if(tore_2 == -1){
+            this.setNullValue(true);
+        }
         this.tore_2 = tore_2;
     }
     
@@ -142,6 +159,9 @@ public class CrawlErgebnis {
      * @param h_tore_1 the new h_tore_1
      */
     public void setH_tore_1(int h_tore_1) {
+        if(h_tore_1 == -1){
+            this.setNullValue(true);
+        }
         this.h_tore_1 = h_tore_1;
     }
     
@@ -160,6 +180,9 @@ public class CrawlErgebnis {
      * @param h_tore_2 the new h_tore_2
      */
     public void setH_tore_2(int h_tore_2) {
+        if(h_tore_2 == -1){
+            this.setNullValue(true);
+        }
         this.h_tore_2 = h_tore_2;
     }
 
@@ -191,6 +214,9 @@ public class CrawlErgebnis {
      * @param date the new date
      */
     public void setDate(Date date) {
+        if(date == null){
+            this.setNullValue(true);
+        }
         this.date = date;
     }
     
@@ -202,5 +228,15 @@ public class CrawlErgebnis {
      */
     private static String getHQLDateFormatFromDate(Date date) {
         return new SimpleDateFormat("yyyy-MM-dd").format(date);
+    }
+
+    
+    public Boolean getNullValue() {
+        return nullValue;
+    }
+
+    
+    public void setNullValue(Boolean nullValue) {
+        this.nullValue = nullValue;
     }
 }

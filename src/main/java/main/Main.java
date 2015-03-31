@@ -25,15 +25,10 @@ import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
-
 import webcrawler.Bwin;
 import webcrawler.CrawlErgebnis;
 import webcrawler.DbManage;
 import webcrawler.WebCrawler;
-
-
 
 // TODO: Auto-generated Javadoc
 /**
@@ -41,38 +36,26 @@ import webcrawler.WebCrawler;
  */
 public class Main {
 
-
-
     /** The Constant logger. */
-    private static final Logger logger       = LoggerFactory.getLogger(Main.class);
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
+
     /**
      * The main method.
      *
      * @param args the arguments
      */
     public static void main(String[] args) {
-       
-      run();
-  
+
+        run();
+
     }
-    
-    
+
     /**
      * runs 200 crawls. Time on Raspberry pi one and a half week
      */
-    public static void run(){
-        int i = 1;
-        Boolean go = true;
-        while (go) {
-            logger.info("RUNNING NEW CRAWL "+i); 
-            WebCrawler.crawl(i);
-            i++;
-            if(i == 200)
-            {
-                WebCrawler.notifiy("TO Fast Crawlings", "Run 200 finished");
-                go = false;
-            }
-        }
+    public static void run() {
+        int runs = 200;
+        WebCrawler.crawl(200);
     }
-        
+
 }
